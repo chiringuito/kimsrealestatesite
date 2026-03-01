@@ -128,9 +128,12 @@
   document.body.insertBefore(topDiv, document.body.firstChild);
 
   // Inject footer at bottom
-  const botDiv = document.createElement('div');
-  botDiv.innerHTML = footerHTML;
-  document.body.appendChild(botDiv);
+  document.addEventListener('DOMContentLoaded', function() {
+    // Inject footer at bottom
+    const botDiv = document.createElement('div');
+    botDiv.innerHTML = footerHTML;
+    document.body.appendChild(botDiv);
+  });
 
   // Hamburger toggle
   document.getElementById('hamburger').addEventListener('click', function() {
