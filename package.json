@@ -1,0 +1,8 @@
+{
+  "name": "kimreidy-website",
+  "version": "1.0.0",
+  "description": "Kim Reidy Real Estate Website",
+  "scripts": {
+    "build": "node build-manifest.js"
+  }
+}

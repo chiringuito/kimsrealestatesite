@@ -1,0 +1,83 @@
+# ══════════════════════════════════════════════════════════════
+#  Decap CMS (formerly Netlify CMS) — Configuration
+#  This tells the CMS what Kim can edit and how
+#  File lives at: /admin/config.yml
+# ══════════════════════════════════════════════════════════════
+
+backend:
+  name: git-gateway          # Uses Netlify Identity for login
+  branch: main               # Branch to update when Kim saves
+
+# Media files Kim uploads go here
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# ── What Kim can edit ──
+collections:
+
+  # ── 1. BLOG POSTS ──────────────────────────────────────────
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "blog/_posts"
+    create: true             # Kim can create new posts
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title",           name: "title",       widget: "string" }
+      - { label: "Publish Date",    name: "date",        widget: "datetime" }
+      - { label: "Author",          name: "author",      widget: "string",   default: "Kim Reidy" }
+      - { label: "Featured Image",  name: "image",       widget: "image",    required: false }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - "Seattle Market Update"
+          - "Buying Tips"
+          - "Selling Tips"
+          - "Relocation"
+          - "Neighborhood Guide"
+          - "Kim's Picks"
+      - { label: "Excerpt",         name: "excerpt",     widget: "text",     hint: "Short summary shown on the blog listing page (2-3 sentences)" }
+      - { label: "Body",            name: "body",        widget: "markdown" }
+      - { label: "SEO Description", name: "seo_desc",    widget: "string",   required: false, hint: "Optional: description for Google search results" }
+
+  # ── 2. ABOUT / BIO ─────────────────────────────────────────
+  - name: "about"
+    label: "About Kim (Bio)"
+    files:
+      - label: "Bio Content"
+        name: "bio"
+        file: "content/bio.json"
+        fields:
+          - { label: "Name",        name: "name",        widget: "string" }
+          - { label: "Title",       name: "title",       widget: "string" }
+          - { label: "Photo",       name: "photo",       widget: "image" }
+          - { label: "Paragraph 1", name: "para1",       widget: "text" }
+          - { label: "Paragraph 2", name: "para2",       widget: "text" }
+          - { label: "Paragraph 3", name: "para3",       widget: "text" }
+          - { label: "Paragraph 4", name: "para4",       widget: "text" }
+          - { label: "Paragraph 5 (free time)", name: "para5", widget: "text" }
+
+  # ── 3. TESTIMONIALS ────────────────────────────────────────
+  - name: "testimonials"
+    label: "Testimonials"
+    folder: "content/testimonials"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Client Name",   name: "name",    widget: "string" }
+      - { label: "Quote",         name: "quote",   widget: "text" }
+      - { label: "Headline",      name: "headline",widget: "string" }
+      - { label: "Photo",         name: "photo",   widget: "image", required: false }
+      - { label: "Show on Homepage Slider", name: "featured", widget: "boolean", default: false }
+
+  # ── 4. SITE SETTINGS ───────────────────────────────────────
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "Contact Info"
+        name: "contact"
+        file: "content/settings.json"
+        fields:
+          - { label: "Phone Number",  name: "phone",   widget: "string" }
+          - { label: "Email Address", name: "email",   widget: "string" }
+          - { label: "Office Address",name: "address", widget: "string" }

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Property Search – Kim Reidy Real Estate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .price-tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 60px; }
+    .price-tile { position: relative; border-radius: 6px; overflow: hidden; display: block; box-shadow: 0 4px 16px rgba(0,0,0,.1); }
+    .price-tile img { width: 100%; height: 220px; object-fit: cover; transition: transform .35s; }
+    .price-tile:hover img { transform: scale(1.05); }
+    .price-tile-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.75) 0%, transparent 55%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 18px; color: var(--white);
+    }
+    .price-tile-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; opacity: .8; }
+    .price-tile-range { font-family: var(--font-serif); font-size: 18px; font-weight: 700; }
+    .search-bar-section { background: var(--gray-bg); padding: 40px 20px; }
+    .search-bar { background: var(--white); border-radius: 6px; padding: 28px; max-width: 700px; margin: 0 auto; box-shadow: 0 4px 16px rgba(0,0,0,.07); }
+    .search-bar input, .search-bar select {
+      width: 100%; padding: 11px 14px; border: 1px solid var(--gray-mid);
+      border-radius: 4px; font-size: 14px; font-family: inherit;
+      margin-bottom: 12px; outline: none; transition: border-color .2s;
+    }
+    .search-bar input:focus, .search-bar select:focus { border-color: var(--red); }
+    .search-bar .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    .search-bar .form-row input { margin-bottom: 0; }
+    /* RealScout embed placeholder */
+    .realscout-frame { width: 100%; height: 650px; border: none; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+    @media(max-width:800px){
+      .price-tiles { grid-template-columns: 1fr 1fr; }
+      .realscout-frame { height: 500px; }
+    }
+    @media(max-width:480px){ .price-tiles { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <script src="/kimreidy-shared.js"></script>
+
+  <div class="page-hero">
+    <h1>Property Search</h1>
+    <p>Find your perfect Seattle home</p>
+  </div>
+
+  <!-- Quick search bar -->
+  <div class="search-bar-section">
+    <div class="search-bar">
+      <input type="text" id="s-loc" placeholder="Search by neighborhood, city, or school" />
+      <div class="form-row">
+        <input type="number" id="s-beds" placeholder="Min Beds" min="0" />
+        <input type="number" id="s-baths" placeholder="Min Baths" min="0" />
+      </div>
+      <div class="form-row">
+        <input type="text" id="s-min" placeholder="Price Min" />
+        <input type="text" id="s-max" placeholder="Price Max" />
+      </div>
+      <button class="btn-red" style="width:100%" onclick="doSearch()"><i class="fas fa-search"></i> Search Listings</button>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">Browse By Price</h2>
+      <div class="section-divider"></div>
+      <div class="price-tiles">
+        <a class="price-tile" href="https://kimreidy.realscout.com/homesearch/map?pmax=500000&zoom=12&geo_type=city&geo_id=5363000" target="_blank">
+          <img src="https://kimreidy.com/wp-content/uploads/2022/01/https___kimreidy.avenuehq.com_wp-content_uploads_sites_2375_2020_07_0-500-1-1368x2048-1.jpg" alt="$0-$500K" />
+          <div class="price-tile-overlay"><span class="price-tile-label">Search From</span><span class="price-tile-range">$0 To $500K</span></div>
+        </a>
+        <a class="price-tile" href="https://kimreidy.realscout.com/homesearch/map?pmin=500000&pmax=800000&zoom=12&geo_type=city&geo_id=5363000" target="_blank">
+          <img src="https://kimreidy.com/wp-content/uploads/2022/01/https___kimreidy.avenuehq.com_wp-content_uploads_sites_2375_2020_07_500-800-1-1368x2048-1.jpg" alt="$500K-$800K" />
+          <div class="price-tile-overlay"><span class="price-tile-label">Search From</span><span class="price-tile-range">$500K To $800K</span></div>
+        </a>
+        <a class="price-tile" href="https://kimreidy.realscout.com/homesearch/map?pmin=800000&pmax=1500000&zoom=12&geo_type=city&geo_id=5363000" target="_blank">
+          <img src="https://kimreidy.com/wp-content/uploads/2022/01/https___kimreidy.avenuehq.com_wp-content_uploads_sites_2375_2020_07_800-1.5-1368x2048-1.jpg" alt="$800K-$1.5M" />
+          <div class="price-tile-overlay"><span class="price-tile-label">Search From</span><span class="price-tile-range">$800K To $1.5M</span></div>
+        </a>
+        <a class="price-tile" href="https://kimreidy.realscout.com/homesearch/map?pmin=1500000&zoom=12&geo_type=city&geo_id=5363000" target="_blank">
+          <img src="https://kimreidy.com/wp-content/uploads/2022/01/https___kimreidy.avenuehq.com_wp-content_uploads_sites_2375_2020_07_1.5M-1368x2048-1.jpg" alt="$1.5M+" />
+          <div class="price-tile-overlay"><span class="price-tile-label">Search From</span><span class="price-tile-range">Above $1.5M+</span></div>
+        </a>
+      </div>
+
+      <!-- ══════════════════════════════════════════════
+           REALSCOUT EMBED — paste your embed code here
+           Log into RealScout → Settings → Website/Embed
+           Replace the iframe src below with your embed URL
+           ══════════════════════════════════════════════ -->
+      <h2 class="section-title">All Available Listings</h2>
+      <div class="section-divider"></div>
+      <iframe
+        class="realscout-frame"
+        src="https://kimreidy.realscout.com/homesearch/map?zoom=12&geo_type=city&geo_id=5363000"
+        title="Property Search powered by RealScout"
+        allowfullscreen>
+      </iframe>
+      <p style="text-align:center;margin-top:16px;font-size:13px;color:var(--gray-text);">
+        Search powered by <a href="https://www.realscout.com" target="_blank" style="color:var(--red)">RealScout</a> MLS.
+        <a href="https://kimreidy.realscout.com" target="_blank" style="color:var(--red)">Open in full screen →</a>
+      </p>
+    </div>
+  </section>
+
+  <script>
+    function doSearch() {
+      const pmin = document.getElementById('s-min').value.replace(/\D/g,'');
+      const pmax = document.getElementById('s-max').value.replace(/\D/g,'');
+      const beds = document.getElementById('s-beds').value;
+      let url = 'https://kimreidy.realscout.com/homesearch/map?zoom=12&geo_type=city&geo_id=5363000';
+      if (pmin) url += '&pmin=' + pmin;
+      if (pmax) url += '&pmax=' + pmax;
+      if (beds) url += '&beds=' + beds;
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>

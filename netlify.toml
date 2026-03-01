@@ -1,0 +1,37 @@
+# ══════════════════════════════════════════════
+#  netlify.toml — Netlify configuration
+#  This file lives in the ROOT of your site folder
+# ══════════════════════════════════════════════
+
+[build]
+  publish = "."
+  command = "node build-manifest.js"
+
+[[redirects]]
+  from = "http://kimreidy.com/*"
+  to   = "https://www.kimreidy.com/:splat"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "https://kimreidy.com/*"
+  to   = "https://www.kimreidy.com/:splat"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/*"
+  to   = "/index.html"
+  status = 404
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

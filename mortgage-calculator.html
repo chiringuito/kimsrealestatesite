@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mortgage Calculator – Kim Reidy Real Estate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .calc-wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: start; }
+    .calc-box { background: var(--white); border-radius: 8px; padding: 36px; box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+    .calc-box h2 { font-family: var(--font-serif); font-size: 22px; margin-bottom: 28px; }
+    .calc-box label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 5px; }
+    .calc-box input, .calc-box select {
+      width: 100%; padding: 11px 14px; border: 1px solid var(--gray-mid); border-radius: 4px;
+      font-size: 15px; font-family: inherit; outline: none; margin-bottom: 18px; transition: border-color .2s;
+    }
+    .calc-box input:focus, .calc-box select:focus { border-color: var(--red); }
+    .calc-result-box { background: var(--gray-bg); border-radius: 8px; padding: 36px; }
+    .calc-result-box h2 { font-family: var(--font-serif); font-size: 22px; margin-bottom: 28px; }
+    .result-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--gray-mid); }
+    .result-row:last-child { border-bottom: none; }
+    .result-label { font-size: 14px; color: var(--gray-text); }
+    .result-value { font-size: 15px; font-weight: 700; }
+    .result-row.highlight .result-value { color: var(--red); font-size: 28px; }
+    .result-row.highlight .result-label { font-size: 15px; font-weight: 700; color: var(--black); }
+    .disclaimer { font-size: 12px; color: var(--gray-text); margin-top: 20px; line-height: 1.6; }
+    @media(max-width:800px){ .calc-wrap { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <script src="/kimreidy-shared.js"></script>
+
+  <div class="page-hero">
+    <h1>Mortgage Calculator</h1>
+    <p>Estimate your monthly payment and see what fits your budget</p>
+  </div>
+
+  <section style="background:var(--gray-bg);">
+    <div class="container">
+      <div class="calc-wrap">
+
+        <!-- INPUTS -->
+        <div class="calc-box">
+          <h2>Loan Details</h2>
+          <label>Home Price ($)</label>
+          <input type="number" id="homePrice" value="650000" min="0" oninput="calculate()" />
+          <label>Down Payment ($)</label>
+          <input type="number" id="downPayment" value="130000" min="0" oninput="calculate()" />
+          <label>Loan Term</label>
+          <select id="loanTerm" onchange="calculate()">
+            <option value="30">30 Years (Fixed)</option>
+            <option value="20">20 Years (Fixed)</option>
+            <option value="15">15 Years (Fixed)</option>
+            <option value="10">10 Years (Fixed)</option>
+          </select>
+          <label>Interest Rate (%)</label>
+          <input type="number" id="interestRate" value="6.75" min="0" max="25" step="0.01" oninput="calculate()" />
+          <label>Property Tax (annual $)</label>
+          <input type="number" id="propTax" value="6500" min="0" oninput="calculate()" />
+          <label>Home Insurance (annual $)</label>
+          <input type="number" id="insurance" value="1500" min="0" oninput="calculate()" />
+          <label>HOA (monthly $)</label>
+          <input type="number" id="hoa" value="0" min="0" oninput="calculate()" />
+          <button class="btn-red" style="width:100%" onclick="calculate()">Calculate</button>
+        </div>
+
+        <!-- RESULTS -->
+        <div class="calc-result-box">
+          <h2>Your Estimate</h2>
+          <div class="result-row highlight">
+            <span class="result-label">Monthly Payment</span>
+            <span class="result-value" id="r-monthly">$—</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Principal & Interest</span>
+            <span class="result-value" id="r-pi">$—</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Property Tax (monthly)</span>
+            <span class="result-value" id="r-tax">$—</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Home Insurance (monthly)</span>
+            <span class="result-value" id="r-ins">$—</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">HOA</span>
+            <span class="result-value" id="r-hoa">$—</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Loan Amount</span>
+            <span class="result-value" id="r-loan">$—</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Down Payment</span>
+            <span class="result-value" id="r-down">$— (—%)</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Total Interest Paid</span>
+            <span class="result-value" id="r-interest">$—</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Total Cost of Loan</span>
+            <span class="result-value" id="r-total">$—</span>
+          </div>
+
+          <p class="disclaimer">This calculator provides estimates for informational purposes only and does not constitute financial advice. Actual loan terms will vary. Contact a licensed lender for accurate quotes.</p>
+
+          <div style="margin-top:24px">
+            <a href="contact.html" class="btn-red">Talk to Kim About Financing</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
+    function calculate() {
+      const price    = parseFloat(document.getElementById('homePrice').value)    || 0;
+      const down     = parseFloat(document.getElementById('downPayment').value)   || 0;
+      const years    = parseInt(document.getElementById('loanTerm').value)        || 30;
+      const rate     = parseFloat(document.getElementById('interestRate').value)  || 0;
+      const tax      = parseFloat(document.getElementById('propTax').value)       || 0;
+      const ins      = parseFloat(document.getElementById('insurance').value)     || 0;
+      const hoa      = parseFloat(document.getElementById('hoa').value)           || 0;
+
+      const loan     = price - down;
+      const months   = years * 12;
+      const mr       = rate / 100 / 12;
+      let pi = 0;
+      if (mr > 0) {
+        pi = loan * (mr * Math.pow(1+mr, months)) / (Math.pow(1+mr, months) - 1);
+      } else {
+        pi = loan / months;
+      }
+      const taxMo    = tax / 12;
+      const insMo    = ins / 12;
+      const total    = pi + taxMo + insMo + hoa;
+      const totalPaid= pi * months;
+      const totalInt = totalPaid - loan;
+      const downPct  = price > 0 ? ((down/price)*100).toFixed(1) : 0;
+
+      document.getElementById('r-monthly').textContent  = fmt(total);
+      document.getElementById('r-pi').textContent       = fmt(pi);
+      document.getElementById('r-tax').textContent      = fmt(taxMo);
+      document.getElementById('r-ins').textContent      = fmt(insMo);
+      document.getElementById('r-hoa').textContent      = fmt(hoa);
+      document.getElementById('r-loan').textContent     = fmt(loan);
+      document.getElementById('r-down').textContent     = fmt(down) + ' (' + downPct + '%)';
+      document.getElementById('r-interest').textContent = fmt(totalInt);
+      document.getElementById('r-total').textContent    = fmt(totalPaid);
+    }
+    calculate();
+  </script>
+</body>
+</html>

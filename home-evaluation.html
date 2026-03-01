@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home Evaluation – Kim Reidy Real Estate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .eval-wrap { display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; align-items: start; }
+    .eval-info h2 { font-family: var(--font-serif); font-size: 26px; margin-bottom: 18px; }
+    .eval-info p { color: var(--gray-text); font-size: 15px; line-height: 1.8; margin-bottom: 14px; }
+    .eval-info ul { list-style: none; margin-top: 20px; }
+    .eval-info li { display: flex; align-items: center; gap: 10px; font-size: 14px; margin-bottom: 12px; }
+    .eval-info li i { color: var(--red); font-size: 16px; width: 20px; }
+    .eval-form-box { background: var(--white); border-radius: 8px; padding: 36px; box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+    .eval-form-box h2 { font-family: var(--font-serif); font-size: 22px; margin-bottom: 24px; }
+    @media(max-width:800px){ .eval-wrap { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <script src="/kimreidy-shared.js"></script>
+
+  <div class="page-hero">
+    <h1>Home Evaluation</h1>
+    <p>Find out what your home is worth in today's market</p>
+  </div>
+
+  <section style="background:var(--gray-bg);">
+    <div class="container">
+      <div class="eval-wrap">
+
+        <div class="eval-info">
+          <h2>Get a Free Home Valuation</h2>
+          <p>Thinking about selling? The first step is knowing what your home is worth. Kim will perform a detailed comparative market analysis (CMA) — completely free and with no obligation to sell.</p>
+          <p>Unlike automated online estimates, Kim's evaluation is based on real local knowledge, recent comparable sales, current market conditions, and the unique features of your home.</p>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> Free, no-obligation evaluation</li>
+            <li><i class="fas fa-check-circle"></i> Based on real comparable sales data</li>
+            <li><i class="fas fa-check-circle"></i> Delivered within 24–48 hours</li>
+            <li><i class="fas fa-check-circle"></i> Includes market trend analysis</li>
+            <li><i class="fas fa-check-circle"></i> Kim reviews in person or by video call</li>
+          </ul>
+          <br>
+          <img src="https://kimreidy.com/wp-content/uploads/2022/01/Seller_Image-min.jpg" alt="Home Evaluation" style="border-radius:6px;box-shadow:0 4px 16px rgba(0,0,0,.1);" />
+        </div>
+
+        <div class="eval-form-box">
+          <h2>Request Your Free Evaluation</h2>
+          <!-- FORMSPREE: Replace YOUR_FORM_ID -->
+          <form method="POST" data-netlify="true" netlify-honeypot="bot-field" id="evalForm" onsubmit="handleSubmit(event,'evalForm')">
+            <input type="hidden" name="form-name" value="home-evaluation" />
+            <input type="hidden" name="bot-field" />
+            <input type="hidden" name="_subject" value="Home Evaluation Request - KimReidy.com" />
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name *</label>
+                <input type="text" name="first_name" required />
+              </div>
+              <div class="form-group">
+                <label>Last Name *</label>
+                <input type="text" name="last_name" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email *</label>
+              <input type="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="tel" name="phone" />
+            </div>
+            <div class="form-group">
+              <label>Property Address *</label>
+              <input type="text" name="address" placeholder="Street address" required />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>City</label>
+                <input type="text" name="city" value="Seattle" />
+              </div>
+              <div class="form-group">
+                <label>Zip Code</label>
+                <input type="text" name="zip" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Bedrooms</label>
+                <select name="bedrooms">
+                  <option value="">Select</option>
+                  <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Bathrooms</label>
+                <select name="bathrooms">
+                  <option value="">Select</option>
+                  <option>1</option><option>1.5</option><option>2</option><option>2.5</option><option>3+</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Approximate Square Footage</label>
+              <input type="text" name="sqft" placeholder="e.g. 1,800" />
+            </div>
+            <div class="form-group">
+              <label>When are you thinking of selling?</label>
+              <select name="timeline">
+                <option value="">-- Select --</option>
+                <option>ASAP (within 30 days)</option>
+                <option>1–3 months</option>
+                <option>3–6 months</option>
+                <option>6–12 months</option>
+                <option>Just curious about value</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Additional Notes</label>
+              <textarea name="notes" rows="3" placeholder="Recent renovations, special features, concerns..."></textarea>
+            </div>
+            <button type="submit" class="btn-red" style="width:100%">Request My Free Evaluation</button>
+            <div class="form-success" id="evalForm-success">Thanks! Kim will reach out within 24–48 hours with your home evaluation.</div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function handleSubmit(e, formId) {
+      const form = document.getElementById(formId);
+      if (form.action.includes('YOUR_FORM_ID')) {
+        e.preventDefault();
+        document.getElementById(formId + '-success').style.display = 'block';
+        form.reset();
+      }
+    }
+  </script>
+</body>
+</html>

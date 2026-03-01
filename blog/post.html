@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="pageTitle">Blog Post – Kim Reidy Real Estate</title>
+  <meta name="description" id="pageDesc" content="Seattle real estate insights from Kim Reidy." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .post-wrap { max-width: 780px; margin: 0 auto; }
+    .post-hero-img { width: 100%; max-height: 420px; object-fit: cover; border-radius: 8px; margin-bottom: 32px; box-shadow: 0 6px 24px rgba(0,0,0,.1); }
+    .post-meta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+    .post-cat { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; background: var(--red); color: var(--white); padding: 4px 12px; border-radius: 20px; }
+    .post-date { font-size: 13px; color: var(--gray-text); }
+    .post-author { font-size: 13px; color: var(--gray-text); }
+    .post-title { font-family: var(--font-serif); font-size: 34px; line-height: 1.3; margin-bottom: 28px; }
+    .post-body { font-size: 16px; line-height: 1.85; color: #333; }
+    .post-body h2 { font-family: var(--font-serif); font-size: 24px; margin: 32px 0 14px; }
+    .post-body h3 { font-family: var(--font-serif); font-size: 20px; margin: 24px 0 10px; }
+    .post-body p { margin-bottom: 18px; }
+    .post-body ul, .post-body ol { margin: 0 0 18px 24px; }
+    .post-body li { margin-bottom: 8px; }
+    .post-body img { max-width: 100%; border-radius: 6px; margin: 20px 0; }
+    .post-body blockquote { border-left: 4px solid var(--red); padding: 12px 20px; margin: 24px 0; background: var(--gray-bg); font-style: italic; border-radius: 0 6px 6px 0; }
+    .post-body a { color: var(--red); }
+    .post-divider { border: none; border-top: 1px solid var(--gray-mid); margin: 40px 0; }
+    .post-author-box { display: flex; align-items: center; gap: 20px; background: var(--gray-bg); padding: 24px; border-radius: 8px; }
+    .post-author-photo { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .post-author-box h4 { font-family: var(--font-serif); font-size: 16px; margin-bottom: 4px; }
+    .post-author-box p { font-size: 13px; color: var(--gray-text); line-height: 1.6; }
+    .post-nav { display: flex; justify-content: space-between; margin-top: 40px; gap: 16px; flex-wrap: wrap; }
+    .post-nav a { font-size: 14px; font-weight: 700; color: var(--red); }
+    .post-nav a:hover { text-decoration: underline; }
+    .post-share { margin-top: 24px; }
+    .post-share span { font-size: 13px; font-weight: 700; margin-right: 10px; }
+    .share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 4px; font-size: 13px; font-weight: 700; color: var(--white); margin-right: 8px; cursor: pointer; text-decoration: none; }
+    .share-fb { background: #1877f2; }
+    .share-tw { background: #1da1f2; }
+    .share-li { background: #0077b5; }
+    .not-found { text-align: center; padding: 80px 20px; }
+    .not-found i { font-size: 56px; color: var(--gray-mid); display: block; margin-bottom: 20px; }
+    @media(max-width:640px){ .post-title { font-size: 26px; } }
+  </style>
+</head>
+<body>
+  <script src="/kimreidy-shared.js"></script>
+
+  <section style="background:var(--white); padding-top:48px;">
+    <div class="container">
+      <div class="post-wrap" id="postContent">
+        <div style="text-align:center;padding:60px;color:var(--gray-text)">
+          <i class="fas fa-spinner fa-spin" style="font-size:32px"></i><br><br>Loading post...
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA strip -->
+  <div style="background:var(--red);color:var(--white);text-align:center;padding:48px 20px;">
+    <h2 style="font-family:var(--font-serif);font-size:24px;margin-bottom:12px">Ready to Buy or Sell in Seattle?</h2>
+    <p style="margin-bottom:24px;opacity:.9">Kim Reidy is Seattle's neighborhood expert. Let's find your perfect home.</p>
+    <a href="/contact.html" style="display:inline-block;background:var(--white);color:var(--red);padding:12px 28px;border-radius:30px;font-weight:700;font-size:14px">Connect With Kim</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js.yaml.min.js"></script>
+  <script>
+    async function loadPost() {
+      const params = new URLSearchParams(window.location.search);
+      const slug   = params.get('slug');
+
+      if (!slug) { showNotFound(); return; }
+
+      // Try loading from blog/_posts/
+      const filepath = `/blog/_posts/${slug}.md`;
+      try {
+        const res = await fetch(filepath);
+        if (!res.ok) { showSamplePost(slug); return; }
+        const text = await res.text();
+        renderPost(text, slug);
+      } catch(e) {
+        showSamplePost(slug);
+      }
+    }
+
+    function renderPost(text, slug) {
+      const match = text.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+      if (!match) { showNotFound(); return; }
+
+      const meta = jsyaml.load(match[1]);
+      const body = marked.parse(match[2]);
+
+      document.getElementById('pageTitle').textContent = meta.title + ' – Kim Reidy Real Estate';
+      if (meta.seo_desc) document.getElementById('pageDesc').setAttribute('content', meta.seo_desc);
+
+      const dateStr = meta.date ? new Date(meta.date).toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' }) : '';
+      const shareUrl = encodeURIComponent(window.location.href);
+      const shareTitle = encodeURIComponent(meta.title);
+
+      document.getElementById('postContent').innerHTML = `
+        <a href="/blog.html" style="font-size:13px;color:var(--red);font-weight:700;display:inline-flex;align-items:center;gap:6px;margin-bottom:24px">
+          <i class="fas fa-arrow-left"></i> Back to Blog
+        </a>
+        ${meta.image ? `<img class="post-hero-img" src="${meta.image}" alt="${meta.title}" />` : ''}
+        <div class="post-meta">
+          ${meta.category ? `<span class="post-cat">${meta.category}</span>` : ''}
+          ${dateStr ? `<span class="post-date"><i class="fas fa-calendar-alt"></i> ${dateStr}</span>` : ''}
+          <span class="post-author"><i class="fas fa-user"></i> ${meta.author || 'Kim Reidy'}</span>
+        </div>
+        <h1 class="post-title">${meta.title}</h1>
+        <div class="post-body">${body}</div>
+
+        <div class="post-share">
+          <span>Share:</span>
+          <a class="share-btn share-fb" href="https://www.facebook.com/sharer/sharer.php?u=${shareUrl}" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+          <a class="share-btn share-li" href="https://www.linkedin.com/shareArticle?mini=true&url=${shareUrl}&title=${shareTitle}" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+        </div>
+
+        <hr class="post-divider" />
+
+        <div class="post-author-box">
+          <img class="post-author-photo" src="https://kimreidy.com/wp-content/uploads/2022/02/kim_home_pic-min.png" alt="Kim Reidy" />
+          <div>
+            <h4>Kim Reidy</h4>
+            <p>Director of Relocation & Senior Broker at Pointe3 Real Estate. Seattle's neighborhood whisperer, helping buyers, sellers and corporate relocations since 2010.</p>
+          </div>
+        </div>
+
+        <div class="post-nav">
+          <a href="/blog.html"><i class="fas fa-arrow-left"></i> All Posts</a>
+          <a href="/contact.html">Work With Kim <i class="fas fa-arrow-right"></i></a>
+        </div>
+      `;
+    }
+
+    function showSamplePost(slug) {
+      const samples = {
+        'sample-spring-market': {
+          title: "Seattle Spring Market: What Buyers Need to Know in 2026",
+          date: "2026-03-01", category: "Seattle Market Update", author: "Kim Reidy",
+          body: `<p>Spring is traditionally the busiest season for Seattle real estate, and 2026 is shaping up to be no different. Inventory is rising slightly from last year's historic lows, but demand from both local and relocating buyers remains strong.</p>
+          <h2>What's Driving the Market</h2>
+          <p>Tech sector hiring continues to bring skilled workers to the Seattle metro, fueling consistent demand particularly in neighborhoods with easy access to major employment hubs like South Lake Union, Bellevue, and Redmond.</p>
+          <h2>What Buyers Should Do Right Now</h2>
+          <p>Get pre-approved before you start touring. In this market, waiting until you find the right home to start your financing is too slow. Have your documentation ready and a lender lined up so you can move within 24-48 hours of finding the right home.</p>
+          <blockquote>The buyers I see winning in this market aren't necessarily offering the most money — they're the most prepared and the most decisive.</blockquote>
+          <p>If you have questions about the current Seattle market or want to know what to expect in your target neighborhood, reach out. I'm happy to share what I'm seeing on the ground.</p>`
+        }
+      };
+      const post = samples[slug] || { title: 'Post Not Found', date: '', category: '', author: 'Kim Reidy', body: '<p>This post could not be found.</p>' };
+      const dateStr = post.date ? new Date(post.date).toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' }) : '';
+      const shareUrl = encodeURIComponent(window.location.href);
+
+      document.getElementById('postContent').innerHTML = `
+        <a href="/blog.html" style="font-size:13px;color:var(--red);font-weight:700;display:inline-flex;align-items:center;gap:6px;margin-bottom:24px">
+          <i class="fas fa-arrow-left"></i> Back to Blog
+        </a>
+        <div class="post-meta">
+          ${post.category ? `<span class="post-cat">${post.category}</span>` : ''}
+          ${dateStr ? `<span class="post-date"><i class="fas fa-calendar-alt"></i> ${dateStr}</span>` : ''}
+          <span class="post-author"><i class="fas fa-user"></i> ${post.author}</span>
+        </div>
+        <h1 class="post-title">${post.title}</h1>
+        <div class="post-body">${post.body}</div>
+        <div class="post-share">
+          <span>Share:</span>
+          <a class="share-btn share-fb" href="https://www.facebook.com/sharer/sharer.php?u=${shareUrl}" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+          <a class="share-btn share-li" href="https://www.linkedin.com/shareArticle?mini=true&url=${shareUrl}" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+        </div>
+        <hr class="post-divider" />
+        <div class="post-author-box">
+          <img class="post-author-photo" src="https://kimreidy.com/wp-content/uploads/2022/02/kim_home_pic-min.png" alt="Kim Reidy" />
+          <div><h4>Kim Reidy</h4><p>Director of Relocation & Senior Broker at Pointe3 Real Estate. Seattle's neighborhood whisperer since 2010.</p></div>
+        </div>
+        <div class="post-nav">
+          <a href="/blog.html"><i class="fas fa-arrow-left"></i> All Posts</a>
+          <a href="/contact.html">Work With Kim <i class="fas fa-arrow-right"></i></a>
+        </div>`;
+    }
+
+    function showNotFound() {
+      document.getElementById('postContent').innerHTML = `
+        <div class="not-found">
+          <i class="fas fa-search"></i>
+          <h2>Post Not Found</h2>
+          <p>This post may have moved or been removed.</p>
+          <a href="/blog.html" class="btn-red" style="margin-top:16px;display:inline-block">← Back to Blog</a>
+        </div>`;
+    }
+
+    loadPost();
+  </script>
+</body>
+</html>

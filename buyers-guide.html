@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buyer's Guide – Kim Reidy Real Estate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .step-card { background: var(--white); border-radius: 8px; padding: 32px 24px; box-shadow: 0 4px 18px rgba(0,0,0,.07); position: relative; }
+    .step-num { width: 44px; height: 44px; background: var(--red); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 900; margin-bottom: 16px; }
+    .step-card h3 { font-family: var(--font-serif); font-size: 17px; margin-bottom: 10px; }
+    .step-card p { font-size: 14px; color: var(--gray-text); line-height: 1.75; }
+    .guide-intro { max-width: 760px; margin: 0 auto; text-align: center; }
+    .guide-intro p { font-size: 16px; color: var(--gray-text); line-height: 1.85; margin-bottom: 16px; }
+    .cta-strip { background: var(--red); color: var(--white); text-align: center; padding: 56px 20px; }
+    .cta-strip h2 { font-family: var(--font-serif); font-size: 28px; margin-bottom: 14px; }
+    .cta-strip p { font-size: 16px; margin-bottom: 28px; opacity: .9; }
+    .resources-row { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+    .res-link { display: flex; align-items: center; gap: 12px; background: var(--white); border-radius: 8px; padding: 18px 24px; box-shadow: 0 4px 14px rgba(0,0,0,.07); font-weight: 700; font-size: 14px; transition: box-shadow .2s; }
+    .res-link:hover { box-shadow: 0 6px 22px rgba(0,0,0,.12); }
+    .res-link img { width: 38px; height: 38px; object-fit: contain; }
+    @media(max-width:800px){ .steps-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <script src="/kimreidy-shared.js"></script>
+
+  <div class="page-hero">
+    <h1>Buyer's Guide</h1>
+    <p>Everything you need to know about buying a home in Seattle</p>
+  </div>
+
+  <section style="background:var(--gray-bg);">
+    <div class="container">
+      <div class="guide-intro">
+        <h2 class="section-title">Your Home Buying Journey</h2>
+        <div class="section-divider"></div>
+        <p>Choosing to buy a home is one of the biggest decisions you'll make in your life. It's a complex process that requires careful planning and the help of a professional. Kim Reidy has guided hundreds of buyers through the Seattle market and is here to make the process smooth, informed, and exciting.</p>
+      </div>
+      <br><br>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3>Get Pre-Approved</h3>
+          <p>Before you start shopping, meet with a lender to get pre-approved for a mortgage. This tells you exactly how much home you can afford and makes your offer more competitive.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3>Define Your Needs</h3>
+          <p>Make a list of must-haves and nice-to-haves. Consider neighborhood, school districts, commute, size, and style. Kim is known as a "neighborhood whisperer" and will help you find the perfect area.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3>Start Your Search</h3>
+          <p>Work with Kim to tour homes that meet your criteria. Use the property search tool to browse by price range, neighborhood, beds, and baths — updated in real time.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">4</div>
+          <h3>Make an Offer</h3>
+          <p>When you find the right home, Kim will craft a competitive offer based on market analysis, current comps, and negotiation strategy. In Seattle's competitive market, strategy matters.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">5</div>
+          <h3>Due Diligence & Inspection</h3>
+          <p>Once under contract, you'll schedule inspections and review disclosures. Kim will guide you through findings and negotiate repairs or credits on your behalf.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">6</div>
+          <h3>Close & Move In</h3>
+          <p>Final walkthrough, sign documents, get your keys! Kim stays with you through every step of closing to ensure a smooth, stress-free finish.</p>
+        </div>
+      </div>
+
+      <div class="resources-row">
+        <a href="home-finder.html" class="res-link">
+          <img src="https://kimreidy.com/wp-content/uploads/2022/01/find_home_icon.png" alt="" /> Home Finder
+        </a>
+        <a href="mortgage-calculator.html" class="res-link">
+          <img src="https://kimreidy.com/wp-content/uploads/2022/01/mortgage_icon.png" alt="" /> Mortgage Calculator
+        </a>
+        <a href="listings.html" class="res-link">
+          <img src="https://kimreidy.com/wp-content/uploads/2022/01/buyer_icon.png" alt="" /> Search Listings
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-strip">
+    <h2>Ready to Start Your Search?</h2>
+    <p>Kim is ready to help you find the perfect Seattle home.</p>
+    <a href="contact.html" class="btn-outline">Connect With Kim</a>
+  </div>
+</body>
+</html>

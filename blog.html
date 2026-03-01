@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog – Kim Reidy Real Estate Seattle</title>
+  <meta name="description" content="Seattle real estate tips, market updates, neighborhood guides and home buying advice from Kim Reidy." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .blog-card { background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 18px rgba(0,0,0,.07); display: flex; flex-direction: column; transition: transform .2s, box-shadow .2s; }
+    .blog-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,.12); }
+    .blog-card-img { width: 100%; height: 200px; object-fit: cover; display: block; }
+    .blog-card-img-placeholder { width: 100%; height: 200px; background: linear-gradient(135deg, #c0392b22, #c0392b44); display: flex; align-items: center; justify-content: center; }
+    .blog-card-img-placeholder i { font-size: 48px; color: var(--red); opacity: .4; }
+    .blog-card-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+    .blog-card-cat { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--red); margin-bottom: 8px; }
+    .blog-card-title { font-family: var(--font-serif); font-size: 17px; margin-bottom: 10px; line-height: 1.4; }
+    .blog-card-excerpt { font-size: 13.5px; color: var(--gray-text); line-height: 1.7; flex: 1; }
+    .blog-card-footer { margin-top: 16px; display: flex; align-items: center; justify-content: space-between; }
+    .blog-card-date { font-size: 12px; color: #aaa; }
+    .blog-card-link { font-size: 13px; font-weight: 700; color: var(--red); }
+    .blog-card-link:hover { text-decoration: underline; }
+    .blog-filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 36px; justify-content: center; }
+    .filter-btn { padding: 8px 18px; border-radius: 20px; border: 2px solid var(--gray-mid); background: var(--white); font-size: 13px; font-weight: 700; cursor: pointer; transition: all .2s; font-family: inherit; }
+    .filter-btn:hover, .filter-btn.active { background: var(--red); border-color: var(--red); color: var(--white); }
+    .blog-empty { text-align: center; padding: 60px 20px; color: var(--gray-text); }
+    .blog-empty i { font-size: 48px; color: var(--gray-mid); margin-bottom: 16px; display: block; }
+    .loading { text-align: center; padding: 60px; color: var(--gray-text); }
+    @media(max-width:900px){ .blog-grid { grid-template-columns: 1fr 1fr; } }
+    @media(max-width:580px){ .blog-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <script src="/kimreidy-shared.js"></script>
+
+  <div class="page-hero">
+    <h1>Kim's Blog</h1>
+    <p>Seattle market updates, buying tips, neighborhood guides & more</p>
+  </div>
+
+  <section style="background:var(--gray-bg);">
+    <div class="container">
+
+      <!-- Category filters -->
+      <div class="blog-filters" id="blogFilters">
+        <button class="filter-btn active" onclick="filterPosts('all', this)">All Posts</button>
+        <button class="filter-btn" onclick="filterPosts('Seattle Market Update', this)">Market Updates</button>
+        <button class="filter-btn" onclick="filterPosts('Buying Tips', this)">Buying Tips</button>
+        <button class="filter-btn" onclick="filterPosts('Selling Tips', this)">Selling Tips</button>
+        <button class="filter-btn" onclick="filterPosts('Relocation', this)">Relocation</button>
+        <button class="filter-btn" onclick="filterPosts('Neighborhood Guide', this)">Neighborhoods</button>
+      </div>
+
+      <!-- Posts grid -->
+      <div class="blog-grid" id="blogGrid">
+        <div class="loading"><i class="fas fa-spinner fa-spin"></i><br>Loading posts...</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Marked.js for parsing markdown -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- js-yaml for parsing frontmatter -->
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js.yaml.min.js"></script>
+
+  <script>
+    // ── Blog post manifest ──────────────────────────────────
+    // This array is auto-updated when Kim publishes via the CMS.
+    // Each entry is a path to a markdown file in blog/_posts/
+    // The build-posts.js script regenerates this list automatically.
+    // To add a post manually: add its filename to the array below.
+
+    const POST_MANIFEST = '/blog/post-manifest.json';
+
+    let allPosts = [];
+    let currentFilter = 'all';
+
+    // ── Load all posts ──────────────────────────────────────
+    async function loadPosts() {
+      try {
+        const manifestRes = await fetch(POST_MANIFEST);
+        if (!manifestRes.ok) {
+          showSamplePosts();
+          return;
+        }
+        const manifest = await manifestRes.json();
+        const posts = await Promise.all(
+          manifest.map(file => fetchPost(file))
+        );
+        allPosts = posts.filter(Boolean).sort((a,b) => new Date(b.date) - new Date(a.date));
+        renderPosts(allPosts);
+      } catch(e) {
+        showSamplePosts();
+      }
+    }
+
+    async function fetchPost(filepath) {
+      try {
+        const res = await fetch(filepath);
+        if (!res.ok) return null;
+        const text = await res.text();
+        return parseMarkdown(text, filepath);
+      } catch(e) { return null; }
+    }
+
+    function parseMarkdown(text, filepath) {
+      // Extract YAML frontmatter between --- markers
+      const match = text.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+      if (!match) return null;
+      try {
+        const meta = jsyaml.load(match[1]);
+        const body = match[2];
+        const slug  = filepath.split('/').pop().replace('.md','');
+        return { ...meta, body, slug, filepath };
+      } catch(e) { return null; }
+    }
+
+    // ── Render posts to grid ────────────────────────────────
+    function renderPosts(posts) {
+      const grid = document.getElementById('blogGrid');
+      if (!posts.length) {
+        grid.innerHTML = `
+          <div class="blog-empty" style="grid-column:1/-1">
+            <i class="fas fa-pen-nib"></i>
+            <p>No posts yet — check back soon!</p>
+          </div>`;
+        return;
+      }
+      grid.innerHTML = posts.map(post => `
+        <a class="blog-card" href="/blog/post.html?slug=${post.slug}" style="text-decoration:none;color:inherit">
+          ${post.image
+            ? `<img class="blog-card-img" src="${post.image}" alt="${post.title}" loading="lazy" />`
+            : `<div class="blog-card-img-placeholder"><i class="fas fa-home"></i></div>`
+          }
+          <div class="blog-card-body">
+            <span class="blog-card-cat">${post.category || 'General'}</span>
+            <h2 class="blog-card-title">${post.title}</h2>
+            <p class="blog-card-excerpt">${post.excerpt || ''}</p>
+            <div class="blog-card-footer">
+              <span class="blog-card-date">${formatDate(post.date)}</span>
+              <span class="blog-card-link">Read More →</span>
+            </div>
+          </div>
+        </a>`
+      ).join('');
+    }
+
+    function filterPosts(category, btn) {
+      currentFilter = category;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filtered = category === 'all' ? allPosts : allPosts.filter(p => p.category === category);
+      renderPosts(filtered);
+    }
+
+    function formatDate(dateStr) {
+      if (!dateStr) return '';
+      const d = new Date(dateStr);
+      return d.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+    }
+
+    // ── Sample posts shown before any real posts exist ──────
+    function showSamplePosts() {
+      allPosts = [
+        {
+          title: "Seattle Spring Market: What Buyers Need to Know in 2026",
+          date: "2026-03-01",
+          category: "Seattle Market Update",
+          excerpt: "Spring is traditionally the busiest season for Seattle real estate. Here's what's shaping the market right now and how buyers can prepare to move quickly.",
+          slug: "sample-spring-market",
+          image: ""
+        },
+        {
+          title: "5 Seattle Neighborhoods Perfect for Corporate Relocations",
+          date: "2026-02-15",
+          category: "Relocation",
+          excerpt: "Moving to Seattle for work? These five neighborhoods offer the best combination of commute times, schools, walkability and community feel for relocating professionals.",
+          slug: "sample-relocation-neighborhoods",
+          image: ""
+        },
+        {
+          title: "How to Win a Bidding War in a Competitive Seattle Market",
+          date: "2026-02-01",
+          category: "Buying Tips",
+          excerpt: "After losing out on two homes, one couple finally won with a strategy that had nothing to do with offering the most money. Here's what actually works.",
+          slug: "sample-bidding-war",
+          image: ""
+        }
+      ];
+      renderPosts(allPosts);
+    }
+
+    loadPosts();
+  </script>
+</body>
+</html>
