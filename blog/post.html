@@ -72,8 +72,8 @@
 
       if (!slug) { showNotFound(); return; }
 
-      // Try loading from blog/_posts/
-      const filepath = `/blog/_posts/${slug}.md`;
+      // Try loading from blog/posts/
+      const filepath = `/blog/posts/${slug}.md`;
       try {
         const res = await fetch(filepath);
         if (!res.ok) { showSamplePost(slug); return; }

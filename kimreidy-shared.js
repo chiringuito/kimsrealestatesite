@@ -68,10 +68,10 @@
   <div class="newsletter-strip">
     <div class="container">
       <h2>Get The Latest Info</h2>
-      <form class="newsletter-form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <form class="newsletter-form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="flex-wrap:wrap;gap:8px;">
         <input type="hidden" name="form-name" value="newsletter" />
         <input type="hidden" name="bot-field" />
-        <input type="email" name="email" placeholder="Email Address" required />
+        <input type="email" name="email" placeholder="Email Address" required style="flex:1;min-width:200px;" />
         <button type="submit">Subscribe</button>
       </form>
     </div>
