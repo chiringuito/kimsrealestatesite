@@ -9,19 +9,23 @@
   <link rel="stylesheet" href="/style.css" />
   <style>
     .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-    .t-card { background: var(--white); border-radius: 6px; overflow: hidden; box-shadow: 0 4px 18px rgba(0,0,0,.07); display: flex; flex-direction: column; }
-    .t-card-img { width: 100%; height: 200px; object-fit: cover; }
-    .t-card-body { padding: 24px; flex: 1; }
-    .t-card-stars { color: #f39c12; font-size: 15px; margin-bottom: 10px; }
-    .t-card-body h3 { font-family: var(--font-serif); font-size: 16px; margin-bottom: 12px; }
-    .t-card-body p { color: var(--gray-text); font-size: 13.5px; line-height: 1.75; font-style: italic; margin-bottom: 14px; }
+    .t-card { background: var(--white); border-radius: 6px; overflow: hidden; box-shadow: 0 4px 18px rgba(0,0,0,.07); display: flex; flex-direction: column; padding: 32px 28px 28px; }
+    .t-card-stars { color: #f39c12; font-size: 16px; margin-bottom: 12px; letter-spacing: 2px; }
+    .t-card-quote-open { font-size: 64px; color: var(--red); line-height: 0.6; margin-bottom: 16px; font-family: Georgia, serif; }
+    .t-card-body h3 { font-family: var(--font-serif); font-size: 16px; margin-bottom: 12px; color: var(--heading-color); }
+    .t-card-body p { color: var(--gray-text); font-size: 13.5px; line-height: 1.75; font-style: italic; margin-bottom: 20px; }
+    .t-card-footer { display: flex; align-items: center; gap: 14px; margin-top: auto; }
+    .t-avatar { width: 48px; height: 48px; border-radius: 50%; background: #d8d8d8; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .t-avatar i { font-size: 22px; color: #999; }
     .t-card-author { font-weight: 700; font-size: 13px; color: var(--red); }
+    .t-card-date { font-size: 12px; color: #aaa; margin-top: 2px; }
     .cta-strip { background: var(--red); color: var(--white); text-align: center; padding: 56px 20px; }
     .cta-strip h2 { font-family: var(--font-serif); font-size: 28px; margin-bottom: 16px; }
     .cta-strip p { font-size: 16px; margin-bottom: 28px; opacity: .9; }
-    @media(max-width:800px){ .testimonials-grid { grid-template-columns:1fr; } }
+    @media(max-width:900px){ .testimonials-grid { grid-template-columns: 1fr 1fr; } }
     @media(max-width:600px){ .testimonials-grid { grid-template-columns:1fr; } }
   </style>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
 
@@ -35,62 +39,98 @@
       <div class="testimonials-grid">
 
         <div class="t-card">
-          <img class="t-card-img" src="images/testimonial-2.jpg" alt="Client" />
+          <div class="t-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="t-card-quote-open">&ldquo;</div>
           <div class="t-card-body">
-            <div class="t-card-stars">★★★★★</div>
             <h3>I highly suggest you work with her!</h3>
-            <p>"Kim is the best! We had a complicated case looking for a place all the way from Los Angeles, and she was there for us the whole time. She video-toured every home we were interested in renting. I could not have asked for a better agent!"</p>
-            <span class="t-card-author">— Verified Client</span>
+            <p>Kim is the best! We had a complicated case looking for a place all the way from Los Angeles, and she was there for us the whole time. She video-toured every home we were interested in renting. I could not have asked for a better agent!</p>
+          </div>
+          <div class="t-card-footer">
+            <div class="t-avatar"><i class="fas fa-user"></i></div>
+            <div>
+              <div class="t-card-author">Catherine F.</div>
+              <div class="t-card-date">February 2016</div>
+            </div>
           </div>
         </div>
 
         <div class="t-card">
-          <img class="t-card-img" src="images/testimonial-1.jpg" alt="Client" />
+          <div class="t-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="t-card-quote-open">&ldquo;</div>
           <div class="t-card-body">
-            <div class="t-card-stars">★★★★★</div>
             <h3>I would not hesitate to endorse them to anyone looking.</h3>
-            <p>"We recently transferred from Nashville to Seattle. From minute one, they were on top of the entire process. The team tirelessly worked to secure the residence and make us feel at ease. We have bought and sold 7 homes and this recommendation does not come lightly."</p>
-            <span class="t-card-author">— Steve & Lori L.</span>
+            <p>We recently transferred from Nashville to Seattle. Our relocation company suggested Yvonne and Kim with Pointe3. From minute one, they were on top of the entire process. The team tirelessly worked to secure the residence, keep closing on track and make us feel at ease. We have bought and sold 7 homes and this recommendation does not come lightly.</p>
+          </div>
+          <div class="t-card-footer">
+            <div class="t-avatar"><i class="fas fa-user"></i></div>
+            <div>
+              <div class="t-card-author">Steve &amp; Lori L.</div>
+              <div class="t-card-date">September 2019</div>
+            </div>
           </div>
         </div>
 
         <div class="t-card">
-          <img class="t-card-img" src="images/testimonial-3.jpg" alt="Client" />
+          <div class="t-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="t-card-quote-open">&ldquo;</div>
           <div class="t-card-body">
-            <div class="t-card-stars">★★★★★</div>
             <h3>Kim really came through.</h3>
-            <p>"When we moved to Seattle, Kim helped us find a great house to rent — pet-friendly, standalone home in a quiet area close to public transit. When we were searching on our own we weren't having luck, but Kim really came through."</p>
-            <span class="t-card-author">— Victoria K.</span>
+            <p>When we moved to Seattle, Kim helped us find a great house to rent &mdash; pet-friendly, standalone home in a quiet area close to public transit. When we were searching on our own we weren&rsquo;t having luck, but Kim really came through.</p>
+          </div>
+          <div class="t-card-footer">
+            <div class="t-avatar"><i class="fas fa-user"></i></div>
+            <div>
+              <div class="t-card-author">Victoria K.</div>
+              <div class="t-card-date">Verified Client</div>
+            </div>
           </div>
         </div>
 
         <div class="t-card">
-          <img class="t-card-img" src="images/testimonial-2.jpg" alt="Client" />
+          <div class="t-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="t-card-quote-open">&ldquo;</div>
           <div class="t-card-body">
-            <div class="t-card-stars">★★★★★</div>
-            <h3>She genuinely cares about finding the right fit.</h3>
-            <p>"Kim took the time to really understand what we were looking for in a neighborhood, not just the house. She's a true local expert and an absolute pleasure to work with. She kept us calm during a stressful process."</p>
-            <span class="t-card-author">— Amanda R.</span>
+            <h3>You can&rsquo;t do better!</h3>
+            <p>Kim has been helping me lease my rental for several years now and it is always a simple, painless experience thanks to her! She is responsive, knowledgeable, and extremely easy to work with. You can&rsquo;t do better!</p>
+          </div>
+          <div class="t-card-footer">
+            <div class="t-avatar"><i class="fas fa-user"></i></div>
+            <div>
+              <div class="t-card-author">Verified Client</div>
+              <div class="t-card-date">November 2015</div>
+            </div>
           </div>
         </div>
 
         <div class="t-card">
-          <img class="t-card-img" src="images/testimonial-1.jpg" alt="Client" />
+          <div class="t-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="t-card-quote-open">&ldquo;</div>
           <div class="t-card-body">
-            <div class="t-card-stars">★★★★★</div>
             <h3>Exceptional relocation support.</h3>
-            <p>"Our company relocated us on short notice and Kim made the entire experience smooth. She understood the corporate relocation process inside and out, communicated everything clearly, and found us a perfect home in exactly the right neighborhood."</p>
-            <span class="t-card-author">— Corporate Relocation Client</span>
+            <p>Our company relocated us on short notice and Kim made the entire experience smooth. She understood the corporate relocation process inside and out, communicated everything clearly, and found us a perfect home in exactly the right neighborhood.</p>
+          </div>
+          <div class="t-card-footer">
+            <div class="t-avatar"><i class="fas fa-user"></i></div>
+            <div>
+              <div class="t-card-author">Corporate Relocation Client</div>
+              <div class="t-card-date">Verified Client</div>
+            </div>
           </div>
         </div>
 
         <div class="t-card">
-          <img class="t-card-img" src="images/testimonial-3.jpg" alt="Client" />
+          <div class="t-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="t-card-quote-open">&ldquo;</div>
           <div class="t-card-body">
-            <div class="t-card-stars">★★★★★</div>
             <h3>Best decision we made in a tough market.</h3>
-            <p>"In a competitive Seattle market, you need someone who knows how to position an offer. Kim helped us win our home on the first try after we'd lost out twice before. Her strategy and market knowledge are second to none."</p>
-            <span class="t-card-author">— James & Karen M.</span>
+            <p>In a competitive Seattle market, you need someone who knows how to position an offer. Kim helped us win our home on the first try after we&rsquo;d lost out twice before. Her strategy and market knowledge are second to none.</p>
+          </div>
+          <div class="t-card-footer">
+            <div class="t-avatar"><i class="fas fa-user"></i></div>
+            <div>
+              <div class="t-card-author">James &amp; Karen M.</div>
+              <div class="t-card-date">Verified Client</div>
+            </div>
           </div>
         </div>
 
@@ -103,6 +143,7 @@
     <p>Join hundreds of satisfied clients who trusted Kim with their move.</p>
     <a href="contact.html" class="btn-outline">Contact Kim Today</a>
   </div>
-<script src="/kimreidy-shared.js"></script>
+
+  <script src="/kimreidy-shared.js"></script>
 </body>
 </html>
