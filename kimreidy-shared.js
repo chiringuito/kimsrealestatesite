@@ -80,14 +80,14 @@
     <div class="footer-grid container">
       <div>
         <div class="footer-logo">
-          <a href="/index.html"><img src="https://www.kimreidy.com/wp-content/uploads/2022/01/kim_site_logo.png" alt="Kim Reidy" /></a>
+          <a href="/index.html"><img src="images/logo-seal-white.png" alt="Kim Reidy" /></a>
         </div>
         <div class="footer-contact">
           <a href="tel:2065792667"><i class="fas fa-phone"></i> (206)-579-2667</a>
           <a href="mailto:kim@pointe3.com"><i class="fas fa-envelope"></i> kim@pointe3.com</a>
         </div>
         <div class="footer-pointe">
-          <img src="https://kimreidy.com/wp-content/uploads/2022/01/pointe_logo_one.png" alt="Pointe3" />
+          <img src="images/pointe3-logo.png" alt="Pointe3" />
           <p class="footer-addr">3509 Fremont Ave N Suite 300<br>Seattle, WA 98103</p>
         </div>
       </div>
@@ -128,12 +128,9 @@
   document.body.insertBefore(topDiv, document.body.firstChild);
 
   // Inject footer at bottom
-  document.addEventListener('DOMContentLoaded', function() {
-    // Inject footer at bottom
-    const botDiv = document.createElement('div');
-    botDiv.innerHTML = footerHTML;
-    document.body.appendChild(botDiv);
-  });
+  const botDiv = document.createElement('div');
+  botDiv.innerHTML = footerHTML;
+  document.body.appendChild(botDiv);
 
   // Hamburger toggle
   document.getElementById('hamburger').addEventListener('click', function() {
