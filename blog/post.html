@@ -86,11 +86,13 @@
     }
 
     function renderPost(text, slug) {
-      const match = text.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+      // Normalize line endings and strip BOM (handles CMS-generated files)
+      const normalized = text.replace(/^\uFEFF/, '').replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+      const match = normalized.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
       if (!match) { showNotFound(); return; }
 
       const meta = jsyaml.load(match[1]);
-      const body = marked.parse(match[2]);
+      const body = marked.parse(match[2] || '');
 
       document.getElementById('pageTitle').textContent = meta.title + ' – Kim Reidy Real Estate';
       if (meta.seo_desc) document.getElementById('pageDesc').setAttribute('content', meta.seo_desc);

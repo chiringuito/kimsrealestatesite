@@ -110,12 +110,14 @@
     }
 
     function parseMarkdown(text, filepath) {
-      // Extract YAML frontmatter between --- markers
-      const match = text.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+      // Normalize line endings and strip BOM (handles CMS-generated files)
+      const normalized = text.replace(/^\uFEFF/, '').replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+      // Match frontmatter between --- markers; trailing newline after closing --- is optional
+      const match = normalized.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
       if (!match) return null;
       try {
         const meta = jsyaml.load(match[1]);
-        const body = match[2];
+        const body = match[2] || '';
         const slug  = filepath.split('/').pop().replace('.md','');
         return { ...meta, body, slug, filepath };
       } catch(e) { return null; }
