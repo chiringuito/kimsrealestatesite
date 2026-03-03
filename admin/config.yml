@@ -55,20 +55,24 @@ collections:
           - { label: "Paragraph 2", name: "para2",       widget: "text" }
           - { label: "Paragraph 3", name: "para3",       widget: "text" }
           - { label: "Paragraph 4", name: "para4",       widget: "text" }
-          - { label: "Paragraph 5 (free time)", name: "para5", widget: "text" }
+          - { label: "Paragraph 5 (service commitment)", name: "para5", widget: "text" }
+          - { label: "Paragraph 6 (free time)",          name: "para6", widget: "text" }
 
   # ── 3. TESTIMONIALS ────────────────────────────────────────
   - name: "testimonials"
     label: "Testimonials"
     folder: "content/testimonials"
     create: true
-    slug: "{{slug}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{name}} - {{date}}"
+    sortable_fields: ["date", "name"]
     fields:
-      - { label: "Client Name",   name: "name",    widget: "string" }
-      - { label: "Quote",         name: "quote",   widget: "text" }
-      - { label: "Headline",      name: "headline",widget: "string" }
-      - { label: "Photo",         name: "photo",   widget: "image", required: false }
-      - { label: "Show on Homepage Slider", name: "featured", widget: "boolean", default: false }
+      - { label: "Reviewer Name",  name: "name",     widget: "string",   hint: "e.g. Steve & Lori L." }
+      - { label: "Review Date",    name: "date",     widget: "datetime", hint: "Date of review" }
+      - { label: "Property Type",  name: "headline", widget: "string",   required: false, hint: "e.g. Helped me buy a home in Ballard, Seattle, WA" }
+      - { label: "Review Text",    name: "quote",    widget: "text",     hint: "The full review text" }
+      - { label: "Star Rating",    name: "stars",    widget: "number",   default: 5, value_type: "int", min: 1, max: 5 }
+      - { label: "Featured on Homepage", name: "featured", widget: "boolean", default: false, hint: "Show in homepage testimonial section?" }
 
   # ── 4. SITE SETTINGS ───────────────────────────────────────
   - name: "settings"

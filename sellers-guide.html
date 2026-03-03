@@ -3,27 +3,55 @@
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Seller's Guide – Kim Reidy Real Estate</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+  <meta name="description" content="A complete guide to selling your home in Seattle with Kim Reidy, your trusted real estate agent." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="/style.css" />
   <style>
-    .sell-intro { max-width: 760px; margin: 0 auto; text-align: center; }
-    .sell-intro p { font-size: 16px; color: var(--gray-text); line-height: 1.85; }
-    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-    .step-card { background: var(--white); border-radius: 8px; padding: 32px 24px; box-shadow: 0 4px 18px rgba(0,0,0,.07); }
-    .step-num { width: 44px; height: 44px; background: var(--red); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 900; margin-bottom: 16px; }
-    .step-card h3 { font-family: var(--font-serif); font-size: 17px; margin-bottom: 10px; }
-    .step-card p { font-size: 14px; color: var(--gray-text); line-height: 1.75; }
-    .sell-img-section { background: var(--white); }
-    .sell-img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-    .sell-img-grid img { border-radius: 6px; box-shadow: 0 8px 30px rgba(0,0,0,.1); }
-    .sell-img-grid h2 { font-family: var(--font-serif); font-size: 26px; margin-bottom: 16px; }
-    .sell-img-grid p { font-size: 15px; color: var(--gray-text); line-height: 1.8; margin-bottom: 14px; }
-    .cta-strip { background: var(--red); color: var(--white); text-align: center; padding: 56px 20px; }
-    .cta-strip h2 { font-family: var(--font-serif); font-size: 28px; margin-bottom: 14px; }
-    .cta-strip p { font-size: 16px; margin-bottom: 28px; opacity: .9; }
-    @media(max-width:800px){ .steps-grid { grid-template-columns:1fr; } .sell-img-grid { grid-template-columns:1fr; } }
+    .guide-content { max-width: 900px; margin: 0 auto; }
+    .guide-content h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .guide-content h2::after {
+      content: '';
+      display: block;
+      width: 56px;
+      height: 3px;
+      background: #E22626;
+      margin: 8px 0 24px;
+    }
+    .guide-content .intro-p {
+      font-size: 16px;
+      color: var(--gray-text);
+      line-height: 1.85;
+      margin-bottom: 32px;
+    }
+    .guide-content h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 28px 0 8px;
+    }
+    .guide-content p {
+      font-size: 15px;
+      color: var(--gray-text);
+      line-height: 1.85;
+      margin-bottom: 14px;
+    }
+    .guide-cta {
+      margin-top: 48px;
+      padding-top: 36px;
+      border-top: 1px solid #e0e0e0;
+    }
+    .guide-cta p {
+      font-size: 16px;
+      color: var(--gray-text);
+      margin-bottom: 20px;
+    }
+    .guide-cta-btns { display: flex; gap: 14px; flex-wrap: wrap; }
   </style>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
@@ -31,72 +59,43 @@
 
   <div class="page-hero">
     <h1>Seller's Guide</h1>
-    <p>Get the best price for your Seattle home</p>
   </div>
 
   <section style="background:var(--gray-bg);">
     <div class="container">
-      <div class="sell-intro">
-        <h2 class="section-title">Selling Your Home</h2>
-        <div class="section-divider"></div>
-        <p>Putting your home on the market takes careful planning plus the help of a professional. Kim Reidy's deep knowledge of the Seattle market — including corporate relocation trends — gives sellers an unmatched edge in pricing, timing, and negotiation.</p>
-      </div>
-      <br><br>
-      <div class="steps-grid">
-        <div class="step-card">
-          <div class="step-num">1</div>
-          <h3>Get a Home Evaluation</h3>
-          <p>Kim will perform a detailed comparative market analysis to determine the right listing price — not too high to scare buyers, and not too low to leave money on the table.</p>
+      <div class="guide-content">
+
+        <h2>Seller's Guide</h2>
+        <p class="intro-p">Selling your home is a complex, multi-step process that calls for the expertise of a Real Estate Agent. There are many things you'll need to consider, and to help you through it, here's a general overview on what to expect and prepare.</p>
+
+        <h3>Get Your Finances In Order</h3>
+        <p>Don't worry if you're still paying off your mortgage, there are several options depending on what type of mortgage you have. However, you'll need to talk to your lender before you can proceed.</p>
+
+        <h3>Meet With a Real Estate Agent</h3>
+        <p>It's important to partner with a Real Estate Agent you feel completely comfortable with. Don't fall for the trap of partnering with the first Real Estate Agent who suggests the highest asking price. Shop around. A good Real Estate Agent can help you price your home to sell, answer questions like 'When is a good time to sell?' and has in-depth knowledge of the market.</p>
+
+        <h3>Listing Your Home</h3>
+        <p>Pricing your home too low or too high is not an option. Setting a fair price will attract more potential buyers, and give your home more exposure. Your Real Estate Agent should be able to explain to you the multitude of factors influencing pricing, including: competitive pricing, current market stats, and of course the estimated value of your home.</p>
+
+        <h3>Marketing And Promotion</h3>
+        <p>The next step will be to sign a Listing Agreement, which gives your Real Estate Agent permission to post your property on MLS (Multiple Listing Service). They'll then begin marketing your home through a variety of mediums — digital and traditional — and inform other Real Estate Agent (representing buyers) that your property is on the market. Your Real Estate Agent can also help you prepare your home for staging.</p>
+
+        <h3>Closing</h3>
+        <p>After the hard work of marketing and promoting your home pays off, you'll hopefully have a few offers on the table. Once you've accepted an offer, your buyer will want to conduct a home inspection and (potentially) negotiate the cost of any repairs. Finally, your lawyer and Real Estate Agent will walk you through the paperwork and legal bits needed to close.</p>
+        <p>Congratulations! With the sale of your home complete, you can now begin looking for a new place.</p>
+
+        <div class="guide-cta">
+          <p>Ready to sell your home?</p>
+          <div class="guide-cta-btns">
+            <a href="/home-evaluation.html" class="btn-red">Get a Home Evaluation</a>
+            <a href="/contact.html" class="btn-black">Contact Kim</a>
+          </div>
         </div>
-        <div class="step-card">
-          <div class="step-num">2</div>
-          <h3>Prepare Your Home</h3>
-          <p>First impressions matter. Kim will advise on decluttering, staging, minor repairs, and curb appeal improvements that deliver the highest return on investment.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-num">3</div>
-          <h3>Professional Marketing</h3>
-          <p>Your home will be marketed with professional photography, MLS listing, social media exposure, and Kim's network of corporate relocation buyers — a unique advantage.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-num">4</div>
-          <h3>Showings & Open Houses</h3>
-          <p>Kim coordinates and attends showings to present your home at its best. Strategic open houses and broker tours ensure maximum exposure to qualified buyers.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-num">5</div>
-          <h3>Review Offers</h3>
-          <p>Kim will present every offer, explain the pros and cons of each, and help you negotiate the best possible terms — not just on price, but contingencies, timing, and conditions.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-num">6</div>
-          <h3>Close Successfully</h3>
-          <p>Kim manages all paperwork, coordinates with title and escrow, and guides you through closing so you receive your proceeds quickly and without surprises.</p>
-        </div>
+
       </div>
     </div>
   </section>
 
-  <section class="sell-img-section">
-    <div class="container">
-      <div class="sell-img-grid">
-        <img src="images/seattle-wheel.jpg" alt="Selling your home" />
-        <div>
-          <h2>Kim's Seller Advantage</h2>
-          <p>As Director of Relocation at Pointe3, Kim has direct connections to corporate relocation buyers — people who are being moved to Seattle by their employers and are ready to buy quickly. This gives your listing access to a qualified buyer pool that most agents simply don't have.</p>
-          <p>Kim's intimate knowledge of every Seattle neighborhood means she can position your home to appeal to the right buyers, in the right way, at the right price.</p>
-          <a href="home-evaluation.html" class="btn-red" style="margin-right:12px">Get a Free Evaluation</a>
-          <a href="contact.html" class="btn-black">Contact Kim</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="cta-strip">
-    <h2>What Is Your Home Worth?</h2>
-    <p>Get a free, no-obligation home evaluation from Kim.</p>
-    <a href="home-evaluation.html" class="btn-outline">Request Evaluation</a>
-  </div>
   <script src="/kimreidy-shared.js"></script>
   <!-- Hidden form for Netlify to detect newsletter submissions -->
   <form name="newsletter" data-netlify="true" netlify-honeypot="bot-field" hidden>
