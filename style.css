@@ -131,26 +131,22 @@ nav.scrolled .hamburger span { background: var(--black); }
 
 /* ── PAGE HERO BANNER ── */
 .page-hero {
-  background: url('images/seattle-banner.jpg') center / cover no-repeat;
+  background: var(--black);
   color: var(--white);
   text-align: center;
   padding: 54px 20px;
   position: relative;
   overflow: hidden;
-  min-height: 160px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .page-hero::before {
   content: '';
   position: absolute; inset: 0;
-  background: rgba(0, 0, 0, 0.65);
+  background: linear-gradient(135deg, rgba(192,57,43,.6) 0%, rgba(0,0,0,.5) 100%);
 }
 .page-hero h1 {
   position: relative;
   font-family: var(--font-serif);
-  font-size: 48px;
+  font-size: 36px;
   font-weight: 700;
   letter-spacing: .5px;
 }
@@ -253,10 +249,19 @@ section { padding: 64px 20px; }
 /* ── FOOTER ── */
 /* ── NEWSLETTER STRIP (above footer) ── */
 .newsletter-strip {
-  background: url("images/seattle-night.jpg") center/cover no-repeat;
-  position: relative; padding: 60px 20px; text-align: center;
+  position: relative;
+  background: #1a1a1a;
+  padding: 80px 20px;
+  text-align: center;
+  overflow: hidden;
 }
-.newsletter-strip::before { content:""; position:absolute; inset:0; background:rgba(0,0,0,0.55); }
+.newsletter-strip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("images/seattle-banner.jpg") center/cover no-repeat;
+  opacity: 0.35;
+}
 .newsletter-card {
   position: relative; z-index: 1;
   background: #fff; border-radius: 12px;
