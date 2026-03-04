@@ -9,9 +9,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="/style.css" />
   <style>
-    .page-hero { background:url('images/seattle-banner.jpg') center/cover no-repeat; position:relative; min-height:200px; display:flex; align-items:center; justify-content:center; }
-    .page-hero::before { content:''; position:absolute; inset:0; background:rgba(0,0,0,.65); }
-    .page-hero h1 { position:relative; z-index:1; color:#fff; font-size:48px; font-weight:700; text-align:center; }
     .finder-page-wrap { display:grid; grid-template-columns:1fr 340px; gap:40px; align-items:start; max-width:1100px; margin:0 auto; padding:48px 24px; }
     .finder-intro h2 { font-size:28px; font-weight:700; margin-bottom:8px; color:var(--black); }
     .finder-intro p  { color:var(--gray-text); font-size:15px; margin-bottom:28px; }
@@ -59,7 +56,7 @@
           <h2>Need help buying the perfect home?</h2>
           <p>Share what you're looking for and we'll work together to make it happen.</p>
         </div>
-        <form method="POST" data-netlify="true" netlify-honeypot="bot-field" name="home-finder" id="finderForm" onsubmit="handleSubmit(event,'finderForm')">
+        <form method="POST" data-netlify="true" netlify-honeypot="bot-field" data-netlify-recaptcha="true" name="home-finder" id="finderForm" onsubmit="handleSubmit(event,'finderForm')">
           <input type="hidden" name="form-name" value="home-finder" />
           <input type="hidden" name="bot-field" />
           <div class="form-group">
@@ -96,6 +93,7 @@
             <div class="form-group"><input type="email" name="email" placeholder="Email Address" required /></div>
             <div class="form-group"><input type="tel" name="phone" placeholder="Phone Number" /></div>
           </div>
+          <div data-netlify-recaptcha="true"></div>
           <button type="submit" class="btn-submit">Submit</button>
           <div class="form-success" id="finderForm-success">Thanks! Kim will set up your custom search and be in touch soon.</div>
         </form>
@@ -103,7 +101,7 @@
 
       <!-- KIM SIDEBAR -->
       <div class="kim-sidebar-card">
-        <img src="images/kim-headshot-about.png" alt="Kim Reidy" class="kim-photo" />
+        <img src="images/kimreidy.jpg" alt="Kim Reidy" class="kim-photo" />
         <div class="kim-sidebar-info">
           <h3>Kim Reidy</h3>
           <p>Director Of Relocation / Senior Broker</p>
