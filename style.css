@@ -131,7 +131,7 @@ nav.scrolled .hamburger span { background: var(--black); }
 
 /* ── PAGE HERO BANNER ── */
 .page-hero {
-  background: var(--black);
+  background: #111;
   color: var(--white);
   text-align: center;
   padding: 54px 20px;
@@ -141,10 +141,17 @@ nav.scrolled .hamburger span { background: var(--black); }
 .page-hero::before {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(192,57,43,.6) 0%, rgba(0,0,0,.5) 100%);
+  background: url('images/seattle-banner.jpg') center/cover no-repeat;
+  opacity: 0.4;
+}
+.page-hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.45);
 }
 .page-hero h1 {
   position: relative;
+  z-index: 1;
   font-family: var(--font-serif);
   font-size: 36px;
   font-weight: 700;
@@ -152,6 +159,7 @@ nav.scrolled .hamburger span { background: var(--black); }
 }
 .page-hero p {
   position: relative;
+  z-index: 1;
   margin-top: 10px;
   font-size: 16px;
   opacity: .85;
@@ -350,7 +358,60 @@ footer {
   .footer-nav-row a { margin: 4px 6px; display: inline-block; }
   .form-row { grid-template-columns: 1fr; }
 }
+
+@media (max-width: 768px) {
+  /* Hero banner */
+  .page-hero h1 { font-size: 32px; }
+
+  /* Newsletter card — reduce padding so it doesn't crowd on phones */
+  .newsletter-card { padding: 28px 20px; }
+  .newsletter-card h2 { font-size: 22px; margin-bottom: 16px; }
+
+  /* Newsletter input — stack button below input on small screens */
+  .newsletter-input-wrap input {
+    padding: 0 20px;
+    height: 52px;
+  }
+  .newsletter-input-wrap button {
+    position: static;
+    display: block;
+    width: 100%;
+    height: 48px;
+    margin-top: 10px;
+    border-radius: 50px;
+    font-size: 16px;
+  }
+
+  /* Footer */
+  .footer-nav-row { flex-wrap: wrap; justify-content: center; }
+  footer { padding: 36px 16px 20px; }
+
+  /* Topbar — stack contact and social vertically */
+  .topbar { flex-direction: column; align-items: center; gap: 4px; padding: 6px 12px; }
+  .topbar-contact a { margin-right: 8px; font-size: 12px; }
+  .topbar-social a { margin-left: 8px; }
+}
+
+@media (max-width: 480px) {
+  /* Hero banner */
+  .page-hero h1 { font-size: 24px; }
+  .page-hero { padding: 40px 16px; }
+
+  /* Sections */
+  section { padding: 40px 16px; }
+  .container { padding: 0 16px; }
+
+  /* Buttons */
+  .btn-red, .btn-black, .btn-outline { font-size: 14px; padding: 10px 20px; }
+
+  /* Bio buttons on home page */
+  .bio-btns { flex-direction: column; }
+  .bio-btns a { width: 100%; text-align: center; }
+
+  /* Section titles */
+  .section-title { font-size: 22px; }
+}
+
 @media (max-width: 540px) {
-  .page-hero h1 { font-size: 26px; }
   .topbar { justify-content: center; text-align: center; }
 }
