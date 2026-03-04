@@ -68,11 +68,12 @@
   <div class="newsletter-strip">
     <div class="newsletter-card">
       <h2>Get The Latest Info</h2>
+      <p style="color:#555;margin-bottom:20px;font-size:16px;">Stay up to date on the Seattle real estate market.</p>
       <form class="newsletter-form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="newsletter" />
         <input type="hidden" name="bot-field" />
         <div class="newsletter-input-wrap">
-          <input type="email" name="email" placeholder="Email Address" required />
+          <input type="email" name="email" placeholder="Enter your email address" required />
           <button type="submit">Submit</button>
         </div>
       </form>
