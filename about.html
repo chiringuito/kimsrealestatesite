@@ -10,18 +10,59 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="/style.css" />
   <style>
-    .about-grid { display: grid; grid-template-columns: 340px 1fr; gap: 60px; align-items: start; }
-    .about-img { border-radius: 4px; box-shadow: 0 8px 30px rgba(0,0,0,.12); }
-    .about-text h2 { font-family: var(--font-serif); font-size: 32px; margin-bottom: 4px; }
+    .about-grid { display: grid; grid-template-columns: 360px 1fr; gap: 60px; align-items: start; }
+    .about-photo-wrap { position: relative; padding-bottom: 50px; padding-right: 50px; }
+    .about-img { width: 100%; border-radius: 4px; box-shadow: 0 8px 30px rgba(0,0,0,.12); display: block; }
+    .about-seal-badge {
+      position: absolute; bottom: 0; right: 0;
+      width: 140px; height: 140px;
+      background: #fff; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,.15);
+    }
+    .about-seal-badge img { width: 118px; }
+    .about-text h2 { font-size: 32px; margin-bottom: 4px; }
     .about-title { color: var(--red); font-weight: 700; font-size: 15px; margin-bottom: 24px; }
     .about-text p { color: var(--gray-text); line-height: 1.85; font-size: 15px; margin-bottom: 16px; }
     .about-btns { margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; }
     .youtube-section { background: var(--gray-bg); text-align: center; }
     .youtube-embed { max-width: 800px; margin: 0 auto; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,.12); }
     .youtube-embed iframe { width: 100%; height: 450px; display: block; border: none; }
+    /* ── PARALLAX NEWSLETTER ── */
+    .newsletter-parallax {
+      position: relative;
+      background-image: url('images/seattle-night.jpg');
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      padding: 80px 24px;
+    }
+    .newsletter-parallax::before { content:''; position:absolute; inset:0; background:rgba(0,0,0,0.45); }
+    .newsletter-parallax .nl-card {
+      position: relative; z-index: 1; max-width: 620px; margin: 0 auto;
+      background: #fff; border-radius: 12px; padding: 40px 36px;
+      box-shadow: 0 8px 40px rgba(0,0,0,.35);
+    }
+    .newsletter-parallax h2 { font-size: 28px; font-weight: 700; margin-bottom: 20px; color: #1a1a1a; }
+    .nl-input-wrap { position: relative; }
+    .nl-input-wrap input[type="email"] {
+      width:100%; height:60px; border-radius:50px; padding:0 180px 0 20px;
+      font-size:18px; color:#000; border:1px #d3cfcf solid; background:#ebebeb;
+      font-family:inherit; box-sizing:border-box;
+    }
+    .nl-input-wrap button {
+      position:absolute; right:5px; top:5px; height:50px; padding:0 30px;
+      background:#E22626; color:#fff; border:1px #E22626 solid; border-radius:50px;
+      font-size:16px; font-weight:600; cursor:pointer; font-family:inherit;
+      transition:background 0.3s,border 0.3s;
+    }
+    .nl-input-wrap button:hover { background:#000; border-color:#000; }
     @media (max-width: 800px) {
       .about-grid { grid-template-columns: 1fr; }
+      .about-photo-wrap { padding-bottom: 40px; padding-right: 40px; }
       .youtube-embed iframe { height: 260px; }
+      .newsletter-parallax { background-attachment: scroll; }
     }
   </style>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
@@ -35,10 +76,10 @@
   <section id="about-kim">
     <div class="container">
       <div class="about-grid">
-        <div style="position:relative;">
-          <img class="about-img" src="images/kim-headshot-about.png" alt="Kim Reidy" style="width:100%;border-radius:4px;" />
-          <div style="position:absolute;bottom:-10px;right:-10px;width:130px;height:130px;background:#fff;border-radius:4px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.15);">
-            <img src="images/logo-seal-color.png" alt="Kim Reidy with Pointe3" style="width:110px;" />
+        <div class="about-photo-wrap">
+          <img class="about-img" src="images/kim-headshot-about.png" alt="Kim Reidy" />
+          <div class="about-seal-badge">
+            <img src="images/logo-seal-color.png" alt="Kim Reidy with Pointe3" />
           </div>
         </div>
         <div class="about-text">
@@ -72,8 +113,23 @@
     </div>
   </section>
 
+  <!-- PARALLAX NEWSLETTER -->
+  <section class="newsletter-parallax">
+    <div class="nl-card">
+      <h2>Get The Latest Info</h2>
+      <form class="nl-input-wrap" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="newsletter" />
+        <input type="hidden" name="bot-field" />
+        <input type="email" name="email" placeholder="Email Address" required />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </section>
+
   <script>
-    // Load bio content from CMS-managed bio.json
+    // Suppress shared-JS newsletter strip on this page (has its own parallax version)
+    window.__skipSharedNewsletter = true;
+  </script>
     (function () {
       fetch('/content/bio.json')
         .then(function (r) { return r.ok ? r.json() : null; })
