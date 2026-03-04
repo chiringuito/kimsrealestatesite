@@ -129,7 +129,8 @@
   <script>
     // Suppress shared-JS newsletter strip on this page (has its own parallax version)
     window.__skipSharedNewsletter = true;
-  </script>
+
+    // Load bio content from CMS-managed bio.json
     (function () {
       fetch('/content/bio.json')
         .then(function (r) { return r.ok ? r.json() : null; })
