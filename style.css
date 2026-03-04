@@ -34,7 +34,12 @@ img { max-width: 100%; height: auto; display: block; }
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 6px;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1001;
 }
+/* Push page content down so topbar+nav don't cover it */
+body > div:first-child { padding-top: 40px; }
 .topbar-contact a { color: var(--white); margin-right: 6px; }
 .topbar-contact a:hover { text-decoration: underline; }
 .topbar-social a { color: var(--white); margin-left: 10px; font-size: 15px; }
@@ -42,11 +47,19 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* ── NAV ── */
 nav {
+  background: transparent;
+  box-shadow: none;
+  position: absolute;
+  top: 40px;
+  left: 0; right: 0;
+  z-index: 1000;
+  transition: background .3s, box-shadow .3s;
+}
+nav.scrolled {
   background: var(--white);
   box-shadow: 0 2px 8px rgba(0,0,0,.08);
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 1000;
 }
 .nav-inner {
   max-width: 1200px;
@@ -61,15 +74,19 @@ nav {
 .nav-menu > li { position: relative; }
 .nav-menu > li > a {
   display: block;
-  padding: 8px 14px;
+  padding: 8px 14px 6px;
   font-size: 14px;
   font-weight: 700;
-  color: var(--black);
+  color: var(--white);
   transition: color .2s;
   white-space: nowrap;
+  border-bottom: 2px solid transparent;
 }
+nav.scrolled .nav-menu > li > a { color: var(--black); }
 .nav-menu > li > a:hover,
-.nav-menu > li > a.active { color: var(--red); }
+.nav-menu > li > a.active { color: var(--red); border-bottom: 2px solid var(--red); }
+nav.scrolled .nav-menu > li > a:hover,
+nav.scrolled .nav-menu > li > a.active { color: var(--red); border-bottom: 2px solid var(--red); }
 
 /* dropdowns */
 .dropdown {
@@ -105,7 +122,8 @@ nav {
 
 /* hamburger */
 .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; margin-left: auto; }
-.hamburger span { display: block; width: 24px; height: 2px; background: var(--black); margin: 5px 0; transition: .3s; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--white); margin: 5px 0; transition: .3s; }
+nav.scrolled .hamburger span { background: var(--black); }
 
 /* ── PAGE HERO BANNER ── */
 .page-hero {
