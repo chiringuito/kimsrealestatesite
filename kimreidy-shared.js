@@ -114,10 +114,11 @@
   document.body.insertBefore(topDiv, document.body.firstChild);
 
   // Inject footer at bottom
-  // On the home page, skip the shared newsletter strip (index.html has its own)
+  // Skip shared newsletter strip on pages that have their own (home, about, etc.)
   const isHomePage = window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
+  const skipNewsletter = isHomePage || window.__skipSharedNewsletter;
   const botDiv = document.createElement('div');
-  botDiv.innerHTML = isHomePage
+  botDiv.innerHTML = skipNewsletter
     ? footerHTML.replace(/<div class="newsletter-strip">[\s\S]*?<\/div>\s*<\/div>/, '')
     : footerHTML;
   document.body.appendChild(botDiv);
