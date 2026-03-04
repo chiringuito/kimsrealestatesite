@@ -3,31 +3,26 @@
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mortgage Calculator – Kim Reidy Real Estate</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="/style.css" />
   <style>
-    .calc-wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: start; }
-    .calc-box { background: var(--white); border-radius: 8px; padding: 36px; box-shadow: 0 4px 20px rgba(0,0,0,.08); }
-    .calc-box h2 { font-family: var(--font-serif); font-size: 22px; margin-bottom: 28px; }
-    .calc-box label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 5px; }
-    .calc-box input, .calc-box select {
-      width: 100%; padding: 11px 14px; border: 1px solid var(--gray-mid); border-radius: 4px;
-      font-size: 15px; font-family: inherit; outline: none; margin-bottom: 18px; transition: border-color .2s;
+    .mc-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .mc-tips h2 { font-size: 22px; font-weight: 700; margin-bottom: 20px; color: var(--black); }
+    .mc-tips h3 { font-size: 15px; font-weight: 700; margin: 20px 0 4px; color: var(--black); }
+    .mc-tips p { font-size: 14px; line-height: 1.75; color: var(--gray-text); margin-bottom: 8px; }
+    .mc-tips ul { list-style: disc; padding-left: 20px; margin-bottom: 12px; }
+    .mc-tips ul li { font-size: 14px; line-height: 1.75; color: var(--gray-text); margin-bottom: 4px; }
+    .mc-tips .note { font-size: 12px; color: #999; margin-top: 24px; font-style: italic; }
+    .mc-embed-wrap { position: sticky; top: 110px; }
+    .mc-embed-wrap iframe { width: 100%; height: 700px; border: none; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,.10); }
+    @media(max-width: 900px) {
+      .mc-layout { grid-template-columns: 1fr; }
+      .mc-embed-wrap { position: static; }
+      .mc-embed-wrap iframe { height: 560px; }
     }
-    .calc-box input:focus, .calc-box select:focus { border-color: var(--red); }
-    .calc-result-box { background: var(--gray-bg); border-radius: 8px; padding: 36px; }
-    .calc-result-box h2 { font-family: var(--font-serif); font-size: 22px; margin-bottom: 28px; }
-    .result-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--gray-mid); }
-    .result-row:last-child { border-bottom: none; }
-    .result-label { font-size: 14px; color: var(--gray-text); }
-    .result-value { font-size: 15px; font-weight: 700; }
-    .result-row.highlight .result-value { color: var(--red); font-size: 28px; }
-    .result-row.highlight .result-label { font-size: 15px; font-weight: 700; color: var(--black); }
-    .disclaimer { font-size: 12px; color: var(--gray-text); margin-top: 20px; line-height: 1.6; }
-    @media(max-width:800px){ .calc-wrap { grid-template-columns:1fr; } }
   </style>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
@@ -35,130 +30,59 @@
 
   <div class="page-hero">
     <h1>Mortgage Calculator</h1>
-    <p>Estimate your monthly payment and see what fits your budget</p>
   </div>
 
-  <section style="background:var(--gray-bg);">
+  <section>
     <div class="container">
-      <div class="calc-wrap">
+      <div class="mc-layout">
 
-        <!-- INPUTS -->
-        <div class="calc-box">
-          <h2>Loan Details</h2>
-          <label>Home Price ($)</label>
-          <input type="number" id="homePrice" value="650000" min="0" oninput="calculate()" />
-          <label>Down Payment ($)</label>
-          <input type="number" id="downPayment" value="130000" min="0" oninput="calculate()" />
-          <label>Loan Term</label>
-          <select id="loanTerm" onchange="calculate()">
-            <option value="30">30 Years (Fixed)</option>
-            <option value="20">20 Years (Fixed)</option>
-            <option value="15">15 Years (Fixed)</option>
-            <option value="10">10 Years (Fixed)</option>
-          </select>
-          <label>Interest Rate (%)</label>
-          <input type="number" id="interestRate" value="6.75" min="0" max="25" step="0.01" oninput="calculate()" />
-          <label>Property Tax (annual $)</label>
-          <input type="number" id="propTax" value="6500" min="0" oninput="calculate()" />
-          <label>Home Insurance (annual $)</label>
-          <input type="number" id="insurance" value="1500" min="0" oninput="calculate()" />
-          <label>HOA (monthly $)</label>
-          <input type="number" id="hoa" value="0" min="0" oninput="calculate()" />
-          <button class="btn-red" style="width:100%" onclick="calculate()">Calculate</button>
+        <div class="mc-tips">
+          <h2>Here are some tips when thinking about purchasing a new home:</h2>
+
+          <h3>Down payment:</h3>
+          <p>The down payment percentage is multiplied by the price you pay for the home. This amount is due at closing (when the deal is done and before you're given keys). The average buyer puts about 15% down in our area. You can put as little as zero. However, if you put less than 20%, you'll also need to pay PMI, which is explained below.</p>
+
+          <h3>Mortgage term:</h3>
+          <p>There are many lengths of loans, but the most common ones in our area are a 30 year loan or a 15 year loan.</p>
+
+          <h3>Interest rate:</h3>
+          <p>We're seeing mortgage rates between 3.4 – 3.9% for people with good credit.</p>
+
+          <h3>Property tax:</h3>
+          <p>If you're purchasing in the Seattle area, the average King County tax rate is 0.930% of your property value annually.</p>
+
+          <h3>Property insurance:</h3>
+          <p>The average cost of homeowner's insurance right now in Washington is about $1002 per year. (This varies with the size of your home and its location.)</p>
+
+          <h3>PMI:</h3>
+          <p>You'll need to pay Private Mortgage Insurance (PMI) if you pay less than 20% down payment. The amount also varies but is usually between 0.3% – 1.5% of the loan.</p>
+
+          <h3>First payment date:</h3>
+          <p>Most mortgage loans can "close" in an average of 30 days. This timeline would start the day you "go mutual" – which means you and the seller have agreed upon terms and all have signed the Purchase Agreement for the property.</p>
+
+          <h3>Not in the calculator — HOA dues:</h3>
+          <p>If you're buying a condominium, expect to also pay Homeowners Association dues (HOA dues) monthly. Downtown Seattle condos are averaging about 85¢ per square foot. The average size of a condo is about 750 sq ft for a 1 bedroom, which equals about $638 per month.</p>
+
+          <h3>When you hit "Calculate" you'll see a graph that shows:</h3>
+          <ul>
+            <li>How much your monthly payment will be (in the upper left),</li>
+            <li>When your loan would be fully paid off (in the upper right),</li>
+            <li>The total amount you'll pay over your entire loan term (in the top middle), and</li>
+            <li>A graph that lays out exactly how your loan will be paid off over time.</li>
+          </ul>
+
+          <p class="note">*Based on market data winter 2022</p>
         </div>
 
-        <!-- RESULTS -->
-        <div class="calc-result-box">
-          <h2>Your Estimate</h2>
-          <div class="result-row highlight">
-            <span class="result-label">Monthly Payment</span>
-            <span class="result-value" id="r-monthly">$—</span>
-          </div>
-          <div class="result-row">
-            <span class="result-label">Principal & Interest</span>
-            <span class="result-value" id="r-pi">$—</span>
-          </div>
-          <div class="result-row">
-            <span class="result-label">Property Tax (monthly)</span>
-            <span class="result-value" id="r-tax">$—</span>
-          </div>
-          <div class="result-row">
-            <span class="result-label">Home Insurance (monthly)</span>
-            <span class="result-value" id="r-ins">$—</span>
-          </div>
-          <div class="result-row">
-            <span class="result-label">HOA</span>
-            <span class="result-value" id="r-hoa">$—</span>
-          </div>
-          <div class="result-row">
-            <span class="result-label">Loan Amount</span>
-            <span class="result-value" id="r-loan">$—</span>
-          </div>
-          <div class="result-row">
-            <span class="result-label">Down Payment</span>
-            <span class="result-value" id="r-down">$— (—%)</span>
-          </div>
-          <div class="result-row">
-            <span class="result-label">Total Interest Paid</span>
-            <span class="result-value" id="r-interest">$—</span>
-          </div>
-          <div class="result-row">
-            <span class="result-label">Total Cost of Loan</span>
-            <span class="result-value" id="r-total">$—</span>
-          </div>
-
-          <p class="disclaimer">This calculator provides estimates for informational purposes only and does not constitute financial advice. Actual loan terms will vary. Contact a licensed lender for accurate quotes.</p>
-
-          <div style="margin-top:24px">
-            <a href="contact.html" class="btn-red">Talk to Kim About Financing</a>
-          </div>
+        <div class="mc-embed-wrap">
+          <iframe src="https://usmortgagecalculator.org/" title="Mortgage Calculator" allowfullscreen loading="lazy"></iframe>
         </div>
 
       </div>
     </div>
   </section>
 
-  <script>
-    function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
-    function calculate() {
-      const price    = parseFloat(document.getElementById('homePrice').value)    || 0;
-      const down     = parseFloat(document.getElementById('downPayment').value)   || 0;
-      const years    = parseInt(document.getElementById('loanTerm').value)        || 30;
-      const rate     = parseFloat(document.getElementById('interestRate').value)  || 0;
-      const tax      = parseFloat(document.getElementById('propTax').value)       || 0;
-      const ins      = parseFloat(document.getElementById('insurance').value)     || 0;
-      const hoa      = parseFloat(document.getElementById('hoa').value)           || 0;
-
-      const loan     = price - down;
-      const months   = years * 12;
-      const mr       = rate / 100 / 12;
-      let pi = 0;
-      if (mr > 0) {
-        pi = loan * (mr * Math.pow(1+mr, months)) / (Math.pow(1+mr, months) - 1);
-      } else {
-        pi = loan / months;
-      }
-      const taxMo    = tax / 12;
-      const insMo    = ins / 12;
-      const total    = pi + taxMo + insMo + hoa;
-      const totalPaid= pi * months;
-      const totalInt = totalPaid - loan;
-      const downPct  = price > 0 ? ((down/price)*100).toFixed(1) : 0;
-
-      document.getElementById('r-monthly').textContent  = fmt(total);
-      document.getElementById('r-pi').textContent       = fmt(pi);
-      document.getElementById('r-tax').textContent      = fmt(taxMo);
-      document.getElementById('r-ins').textContent      = fmt(insMo);
-      document.getElementById('r-hoa').textContent      = fmt(hoa);
-      document.getElementById('r-loan').textContent     = fmt(loan);
-      document.getElementById('r-down').textContent     = fmt(down) + ' (' + downPct + '%)';
-      document.getElementById('r-interest').textContent = fmt(totalInt);
-      document.getElementById('r-total').textContent    = fmt(totalPaid);
-    }
-    calculate();
-  </script>
   <script src="/kimreidy-shared.js"></script>
-  <!-- Hidden form for Netlify to detect newsletter submissions -->
   <form name="newsletter" data-netlify="true" netlify-honeypot="bot-field" hidden>
     <input type="email" name="email" />
     <input type="hidden" name="bot-field" />
