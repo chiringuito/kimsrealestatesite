@@ -10,14 +10,36 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="/style.css" />
   <style>
-    .about-grid { display: grid; grid-template-columns: 380px 1fr; gap: 50px; align-items: start; overflow: visible; }
-    .about-photo-wrap { position: relative; display: block; width: 100%; margin-bottom: 20px; }
-    .about-img { width: 100%; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,.12); display: block; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 50px;
+      align-items: start;
+      overflow: visible;
+    }
+    .about-photo-wrap {
+      position: relative;
+      display: block;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .about-img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.12);
+      display: block;
+    }
     .about-seal-badge {
-      position: absolute; bottom: -20px; right: -20px;
-      width: 130px; height: 130px;
-      background: #fff; border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 130px;
+      height: 130px;
+      background: #fff;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       box-shadow: 0 4px 16px rgba(0,0,0,.18);
       z-index: 2;
     }
@@ -25,10 +47,6 @@
     .about-text h2 { font-size: 32px; margin-bottom: 4px; }
     .about-title { color: var(--red); font-weight: 700; font-size: 15px; margin-bottom: 24px; }
     .about-text p { color: var(--gray-text); line-height: 1.85; font-size: 15px; margin-bottom: 16px; }
-    .about-btns { margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; }
-    .youtube-section { background: var(--gray-bg); text-align: center; }
-    .youtube-embed { max-width: 800px; margin: 0 auto; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,.12); }
-    .youtube-embed iframe { width: 100%; height: 450px; display: block; border: none; }
     /* ── PARALLAX NEWSLETTER ── */
     .newsletter-parallax {
       position: relative;
@@ -39,7 +57,12 @@
       background-repeat: no-repeat;
       padding: 80px 24px;
     }
-    .newsletter-parallax::before { content:''; position:absolute; inset:0; background:rgba(0,0,0,0.45); }
+    .newsletter-parallax::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+    }
     .newsletter-parallax .nl-card {
       position: relative; z-index: 1; max-width: 620px; margin: 0 auto;
       background: #fff; border-radius: 12px; padding: 40px 36px;
@@ -48,21 +71,20 @@
     .newsletter-parallax h2 { font-size: 28px; font-weight: 700; margin-bottom: 20px; color: #1a1a1a; }
     .nl-input-wrap { position: relative; }
     .nl-input-wrap input[type="email"] {
-      width:100%; height:60px; border-radius:50px; padding:0 180px 0 20px;
-      font-size:18px; color:#000; border:1px #d3cfcf solid; background:#ebebeb;
-      font-family:inherit; box-sizing:border-box;
+      width: 100%; height: 60px; border-radius: 50px; padding: 0 180px 0 20px;
+      font-size: 18px; color: #000; border: 1px #d3cfcf solid; background: #ebebeb;
+      font-family: inherit; box-sizing: border-box;
     }
     .nl-input-wrap button {
-      position:absolute; right:5px; top:5px; height:50px; padding:0 30px;
-      background:#E22626; color:#fff; border:1px #E22626 solid; border-radius:50px;
-      font-size:16px; font-weight:600; cursor:pointer; font-family:inherit;
-      transition:background 0.3s,border 0.3s;
+      position: absolute; right: 5px; top: 5px; height: 50px; padding: 0 30px;
+      background: #E22626; color: #fff; border: 1px #E22626 solid; border-radius: 50px;
+      font-size: 16px; font-weight: 600; cursor: pointer; font-family: inherit;
+      transition: background 0.3s, border 0.3s;
     }
-    .nl-input-wrap button:hover { background:#000; border-color:#000; }
+    .nl-input-wrap button:hover { background: #000; border-color: #000; }
     @media (max-width: 800px) {
       .about-grid { grid-template-columns: 1fr; }
       .about-photo-wrap { padding-bottom: 40px; padding-right: 40px; }
-      .youtube-embed iframe { height: 260px; }
       .newsletter-parallax { background-attachment: scroll; }
     }
   </style>
@@ -78,7 +100,7 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-photo-wrap">
-          <img class="about-img" src="images/kim-headshot-about.png" alt="Kim Reidy" />
+          <img class="about-img" src="images/kim_new_pic-min.png" alt="Kim Reidy" />
           <div class="about-seal-badge">
             <img src="images/logo-seal-color.png" alt="Kim Reidy with Pointe3" />
           </div>
@@ -88,29 +110,12 @@
           <p class="about-title" id="bio-title">Director Of Relocation / Senior Broker</p>
           <p data-bio="para1">Kim Reidy moved to Seattle in the fall of 1999 from Harrisburg, PA. She started working in the restaurant industry and quickly grew into management roles, obtaining her first-level sommelier certificate and leading teams in fast-paced customer service environments.</p>
           <p data-bio="para2">Kim was drawn to the real estate industry in the summer of 2010 when she joined Pointe3 Real Estate and Seattle Rental Group as a Relocation Agent. She grew into a top leadership role within the company and was promoted to Director of Relocation, where she runs the rental finding arm of the business and oversees the entire relocation team. Kim is responsible for the daily coordination of dozens of major corporations, top relocation firms, and relocating clients.</p>
-          <p data-bio="para3">As a Senior Broker, Kim mentors new real estate agents at Pointe3 to help them with transaction compliance and winning deals for their own clients. She has dedicated her career to the local real estate market and is devoted to matching prospective buyers with not only the perfect home, but the perfect neighborhood. Because of this, she's known as a local "neighborhood whisperer."</p>
+          <p data-bio="para3">As a Senior Broker, Kim mentors new real estate agents at Pointe3 to help them with transaction compliance and winning deals for their own clients. She has dedicated her career to the local real estate market and is devoted to matching prospective buyers with not only the perfect home, but the perfect neighborhood. Because of this, she's known as a local 'neighborhood whisperer'.</p>
           <p data-bio="para4">Kim also excels at helping owners sell their homes for the best price in the most efficient and effective ways. Her intimate knowledge of the industry, including her pulse on corporate relocation trends, gives her an unmatched edge in our market.</p>
           <p data-bio="para5">Kim's commitment to providing top-notch customer service to each client is a hallmark of her professional ethic. She strives to be more than just a Broker — she possesses a genuine passion for getting to know her clients and their most important needs.</p>
           <p data-bio="para6">In her free time, you can find Kim enjoying the local music scene, trying out new restaurants, and visiting Seattle's museums.</p>
-          <div class="about-btns">
-            <a href="contact.html" class="btn-red">Connect With Me</a>
-            <a href="testimonials.html" class="btn-black">Read Testimonials</a>
-          </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="youtube-section">
-    <div class="container">
-      <h2 class="section-title">Watch Kim on YouTube</h2>
-      <div class="section-divider"></div>
-      <div class="youtube-embed">
-        <!-- Replace with Kim's latest video embed ID from YouTube -->
-        <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=UCD4ZMtJ7MYgBphoonXE6eCw" allowfullscreen title="Kim Reidy on YouTube"></iframe>
-      </div>
-      <br>
-      <a href="https://www.youtube.com/channel/UCD4ZMtJ7MYgBphoonXE6eCw" target="_blank" class="btn-red">View All Videos</a>
     </div>
   </section>
 
@@ -128,10 +133,7 @@
   </section>
 
   <script>
-    // Suppress shared-JS newsletter strip on this page (has its own parallax version)
     window.__skipSharedNewsletter = true;
-
-    // Load bio content from CMS-managed bio.json
     (function () {
       fetch('/content/bio.json')
         .then(function (r) { return r.ok ? r.json() : null; })
@@ -146,11 +148,10 @@
             if (el) el.textContent = d[key];
           });
         })
-        .catch(function () { /* keep static fallback content */ });
+        .catch(function () {});
     })();
   </script>
   <script src="/kimreidy-shared.js"></script>
-  <!-- Hidden form for Netlify to detect newsletter submissions -->
   <form name="newsletter" data-netlify="true" netlify-honeypot="bot-field" hidden>
     <input type="email" name="email" />
     <input type="hidden" name="bot-field" />
