@@ -131,22 +131,26 @@ nav.scrolled .hamburger span { background: var(--black); }
 
 /* ── PAGE HERO BANNER ── */
 .page-hero {
-  background: var(--black);
+  background: url('images/seattle-banner.jpg') center / cover no-repeat;
   color: var(--white);
   text-align: center;
   padding: 54px 20px;
   position: relative;
   overflow: hidden;
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .page-hero::before {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(192,57,43,.6) 0%, rgba(0,0,0,.5) 100%);
+  background: rgba(0, 0, 0, 0.65);
 }
 .page-hero h1 {
   position: relative;
   font-family: var(--font-serif);
-  font-size: 36px;
+  font-size: 48px;
   font-weight: 700;
   letter-spacing: .5px;
 }
