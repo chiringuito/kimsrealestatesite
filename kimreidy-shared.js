@@ -114,8 +114,12 @@
   document.body.insertBefore(topDiv, document.body.firstChild);
 
   // Inject footer at bottom
+  // On the home page, skip the shared newsletter strip (index.html has its own)
+  const isHomePage = window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
   const botDiv = document.createElement('div');
-  botDiv.innerHTML = footerHTML;
+  botDiv.innerHTML = isHomePage
+    ? footerHTML.replace(/<div class="newsletter-strip">[\s\S]*?<\/div>\s*<\/div>/, '')
+    : footerHTML;
   document.body.appendChild(botDiv);
 
   // Hamburger toggle
@@ -153,6 +157,15 @@
 
   window.addEventListener('scroll', function() {
     scrollBtn.style.display = window.scrollY > 400 ? 'flex' : 'none';
+    // Toggle nav transparency: solid white when scrolled, transparent over hero
+    const mainNav = document.querySelector('nav');
+    if (mainNav) {
+      if (window.scrollY > 60) {
+        mainNav.classList.add('scrolled');
+      } else {
+        mainNav.classList.remove('scrolled');
+      }
+    }
   });
 
   // Netlify Identity: redirect to /admin/ after login
