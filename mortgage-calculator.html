@@ -9,20 +9,38 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="/style.css" />
   <style>
-    .mc-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-    .mc-tips h2 { font-size: 22px; font-weight: 700; margin-bottom: 20px; color: var(--black); }
-    .mc-tips h3 { font-size: 15px; font-weight: 700; margin: 20px 0 4px; color: var(--black); }
-    .mc-tips p { font-size: 14px; line-height: 1.75; color: var(--gray-text); margin-bottom: 8px; }
-    .mc-tips ul { list-style: disc; padding-left: 20px; margin-bottom: 12px; }
-    .mc-tips ul li { font-size: 14px; line-height: 1.75; color: var(--gray-text); margin-bottom: 4px; }
-    .mc-tips .note { font-size: 12px; color: #999; margin-top: 24px; font-style: italic; }
-    .mc-widget-wrap { position: sticky; top: 110px; }
-    /* Hide the "usmortgagecalculator.org" credit bar at bottom of widget */
-    #acww-more { display: none !important; }
-    @media(max-width: 900px) {
-      .mc-layout { grid-template-columns: 1fr; }
-      .mc-widget-wrap { position: static; }
+    /* ── Typography matching original site ── */
+    .mc-tips h2 {
+      font-size: 20px; font-weight: 700; color: var(--red);
+      margin: 28px 0 6px;
     }
+    .mc-tips h2:first-child { margin-top: 0; }
+    .mc-tips h3 {
+      font-size: 16px; font-weight: 700; color: var(--black);
+      margin: 18px 0 4px;
+    }
+    .mc-tips p {
+      font-size: 15px; line-height: 1.75; color: var(--black);
+      margin-bottom: 8px;
+    }
+    .mc-tips ul {
+      list-style: disc; padding-left: 24px; margin-bottom: 12px;
+    }
+    .mc-tips ul li {
+      font-size: 15px; line-height: 1.75; color: var(--black); margin-bottom: 4px;
+    }
+    .mc-tips .note {
+      font-size: 13px; color: #888; margin-top: 20px;
+    }
+
+    /* ── Widget full-width at bottom ── */
+    .mc-widget-section {
+      margin-top: 40px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(0,0,0,.08);
+    }
+    #acww-more { display: none !important; }
   </style>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
@@ -34,49 +52,50 @@
 
   <section>
     <div class="container">
-      <div class="mc-layout">
 
-        <!-- LEFT: Tips & guidance -->
-        <div class="mc-tips">
-          <h2>Here are some tips when thinking about purchasing a new home:</h2>
+      <!-- Tips content, full width, matching original layout & colors -->
+      <div class="mc-tips">
 
-          <h3>Down payment:</h3>
-          <p>The down payment percentage is multiplied by the price you pay for the home. This amount is due at closing (when the deal is done and before you're given keys). The average buyer puts about 15% down in our area. You can put as little as zero. However, if you put less than 20%, you'll also need to pay PMI, which is explained below.</p>
+        <h2>Here are some tips when thinking about purchasing a new home:</h2>
 
-          <h3>Mortgage term:</h3>
-          <p>There are many lengths of loans, but the most common ones in our area are a 30 year loan or a 15 year loan.</p>
+        <h3>Down payment:</h3>
+        <p>The down payment percentage is multiplied by the price you pay for the home. This amount is due at closing (when the deal is done and before you're given keys). The average buyer puts about 15% down in our area. You can put as little as zero. However, if you put less than 20%, you'll also need to pay PMI, which is explained below.</p>
 
-          <h3>Interest rate:</h3>
-          <p>We're seeing mortgage rates between 3.4 – 3.9% for people with good credit.</p>
+        <h3>Mortgage term:</h3>
+        <p>There are many lengths of loans, but the most common ones in our area are a 30 year loan or a 15 year loan.</p>
 
-          <h3>Property tax:</h3>
-          <p>If you're purchasing in the Seattle area, the average King County tax rate is 0.930% of your property value annually.</p>
+        <h3>Interest rate:</h3>
+        <p>We're seeing mortgage rates between 3.4 – 3.9% for people with good credit.</p>
 
-          <h3>Property insurance:</h3>
-          <p>The average cost of homeowner's insurance right now in Washington is about $1002 per year. (This varies with the size of your home and its location.)</p>
+        <h3>Property tax:</h3>
+        <p>If you're purchasing in the Seattle area, the average King County tax rate is 0.930% of your property value annually.</p>
 
-          <h3>PMI:</h3>
-          <p>You'll need to pay Private Mortgage Insurance (PMI) if you pay less than 20% down payment. The amount also varies but is usually between 0.3% – 1.5% of the loan.</p>
+        <h3>Property insurance:</h3>
+        <p>The average cost of homeowner's insurance right now in Washington is about $1002 per year. (This varies with the size of your home and its location.)</p>
 
-          <h3>First payment date:</h3>
-          <p>Most mortgage loans can "close" in an average of 30 days. This timeline would start the day you "go mutual" – which means you and the seller have agreed upon terms and all have signed the Purchase Agreement for the property.</p>
+        <h3>PMI:</h3>
+        <p>You'll need to pay Private Mortgage Insurance (PMI) if you pay less than 20% down payment. The amount also varies but is usually between 0.3% – 1.5% of the loan.</p>
 
-          <h3>Not in the calculator — HOA dues:</h3>
-          <p>If you're buying a condominium, expect to also pay Homeowners Association dues (HOA dues) monthly. Downtown Seattle condos are averaging about 85¢ per square foot. The average size of a condo is about 750 sq ft for a 1 bedroom, which equals about $638 per month.</p>
+        <h3>First payment date:</h3>
+        <p>Most mortgage loans can "close" (meaning, the time it takes from starting the lending process to when your loan is complete, and you get the keys to your home) in an average of 30 days. This timeline would start the day you "go mutual" – which means you and the seller have agreed upon terms and all have signed the Purchase Agreement for the property.</p>
 
-          <h3>When you hit "Calculate" you'll see a graph that shows:</h3>
-          <ul>
-            <li>How much your monthly payment will be (in the upper left),</li>
-            <li>When your loan would be fully paid off (in the upper right),</li>
-            <li>The total amount you'll pay over your entire loan term (in the top middle), and</li>
-            <li>A graph that lays out exactly how your loan will be paid off over time.</li>
-          </ul>
+        <h2>Not in the calculator:</h2>
 
-          <p class="note">*Based on market data winter 2022</p>
-        </div>
+        <h3>HOA dues:</h3>
+        <p>If you're buying a condominium, expect to also pay Homeowners Association dues (HOA dues) monthly. Downtown Seattle condos are averaging about 85¢ per square foot. The average size of a condo is about 750 sq ft for a 1 bedroom, which equals about $638 per month.</p>
 
-        <!-- RIGHT: Widget embed (same as original WordPress site) -->
-        <div class="mc-widget-wrap">
+        <h2>When you hit "Calculate" at the bottom, you'll see a graph that shows:</h2>
+        <ul>
+          <li>How much your monthly payment will be (in the upper left),</li>
+          <li>When your loan would be fully paid off (in the upper right),</li>
+          <li>The total amount you'll pay over your entire loan term (in the top middle), and</li>
+          <li>A graph that lays out exactly how your loan will be paid off over time.</li>
+        </ul>
+
+        <p class="note">*Based on market data winter 2022</p>
+
+        <!-- Calculator widget full-width below all tips -->
+        <div class="mc-widget-section">
           <!-- Amortization Calculator Widget START -->
           <script src="https://usmortgagecalculator.org/widget/2.0/js/amortizationcalc-loader.min.js" type="text/javascript"></script>
           <div id="acww-widgetwrapper" style="min-width:250px;width:100%;">
@@ -87,6 +106,7 @@
         </div>
 
       </div>
+
     </div>
   </section>
 
