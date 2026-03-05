@@ -3,7 +3,7 @@ name: Update Blog Manifest
 on:
   push:
     paths:
-      - 'blog/posts/**'
+      - 'blog/_posts/**'
 
 jobs:
   update-manifest:
