@@ -18,7 +18,7 @@ collections:
   # ── 1. BLOG POSTS ──────────────────────────────────────────
   - name: "blog"
     label: "Blog Posts"
-    folder: "blog/posts"
+    folder: "blog/_posts"
     create: true             # Kim can create new posts
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
