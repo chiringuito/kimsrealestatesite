@@ -4,7 +4,7 @@
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title id="pageTitle">Blog Post – Kim Reidy Real Estate</title>
   <meta name="description" id="pageDesc" content="Seattle real estate insights from Kim Reidy." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -47,6 +47,13 @@
 </head>
 <body>
 
+  <!-- Page hero banner — gives the transparent nav a dark background to sit on -->
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <h1>Kim's Blog</h1>
+    </div>
+  </div>
+
   <section style="background:var(--white); padding-top:48px;">
     <div class="container">
       <div class="post-wrap" id="postContent">
@@ -69,38 +76,28 @@
   <script>
     async function loadPost() {
       const params = new URLSearchParams(window.location.search);
-      const slug   = params.get('slug');
-
+      const slug = params.get('slug');
       if (!slug) { showNotFound(); return; }
-
-      // Try loading from blog/posts/
       const filepath = `/blog/_posts/${slug}.md`;
       try {
         const res = await fetch(filepath);
         if (!res.ok) { showSamplePost(slug); return; }
         const text = await res.text();
         renderPost(text, slug);
-      } catch(e) {
-        showSamplePost(slug);
-      }
+      } catch(e) { showSamplePost(slug); }
     }
 
     function renderPost(text, slug) {
-      // Normalize line endings and strip BOM (handles CMS-generated files)
       const normalized = text.replace(/^\uFEFF/, '').replace(/\r\n/g, '\n').replace(/\r/g, '\n');
       const match = normalized.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
       if (!match) { showNotFound(); return; }
-
       const meta = jsyaml.load(match[1]);
       const body = marked.parse(match[2] || '');
-
       document.getElementById('pageTitle').textContent = meta.title + ' – Kim Reidy Real Estate';
       if (meta.seo_desc) document.getElementById('pageDesc').setAttribute('content', meta.seo_desc);
-
       const dateStr = meta.date ? new Date(meta.date).toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' }) : '';
       const shareUrl = encodeURIComponent(window.location.href);
       const shareTitle = encodeURIComponent(meta.title);
-
       document.getElementById('postContent').innerHTML = `
         <a href="/blog.html" style="font-size:13px;color:var(--red);font-weight:700;display:inline-flex;align-items:center;gap:6px;margin-bottom:24px">
           <i class="fas fa-arrow-left"></i> Back to Blog
@@ -113,15 +110,12 @@
         </div>
         <h1 class="post-title">${meta.title}</h1>
         <div class="post-body">${body}</div>
-
         <div class="post-share">
           <span>Share:</span>
           <a class="share-btn share-fb" href="https://www.facebook.com/sharer/sharer.php?u=${shareUrl}" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
           <a class="share-btn share-li" href="https://www.linkedin.com/shareArticle?mini=true&url=${shareUrl}&title=${shareTitle}" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
         </div>
-
         <hr class="post-divider" />
-
         <div class="post-author-box">
           <img class="post-author-photo" src="/images/kim-headshot-outdoor.png" alt="Kim Reidy" />
           <div>
@@ -129,7 +123,6 @@
             <p>Director of Relocation & Senior Broker at Pointe3 Real Estate. Seattle's neighborhood whisperer, helping buyers, sellers and corporate relocations since 2010.</p>
           </div>
         </div>
-
         <div class="post-nav">
           <a href="/blog.html"><i class="fas fa-arrow-left"></i> All Posts</a>
           <a href="/contact.html">Work With Kim <i class="fas fa-arrow-right"></i></a>
@@ -141,7 +134,9 @@
       const samples = {
         'sample-spring-market': {
           title: "Seattle Spring Market: What Buyers Need to Know in 2026",
-          date: "2026-03-01", category: "Seattle Market Update", author: "Kim Reidy",
+          date: "2026-03-01",
+          category: "Seattle Market Update",
+          author: "Kim Reidy",
           body: `<p>Spring is traditionally the busiest season for Seattle real estate, and 2026 is shaping up to be no different. Inventory is rising slightly from last year's historic lows, but demand from both local and relocating buyers remains strong.</p>
           <h2>What's Driving the Market</h2>
           <p>Tech sector hiring continues to bring skilled workers to the Seattle metro, fueling consistent demand particularly in neighborhoods with easy access to major employment hubs like South Lake Union, Bellevue, and Redmond.</p>
@@ -154,7 +149,6 @@
       const post = samples[slug] || { title: 'Post Not Found', date: '', category: '', author: 'Kim Reidy', body: '<p>This post could not be found.</p>' };
       const dateStr = post.date ? new Date(post.date).toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' }) : '';
       const shareUrl = encodeURIComponent(window.location.href);
-
       document.getElementById('postContent').innerHTML = `
         <a href="/blog.html" style="font-size:13px;color:var(--red);font-weight:700;display:inline-flex;align-items:center;gap:6px;margin-bottom:24px">
           <i class="fas fa-arrow-left"></i> Back to Blog
