@@ -8,7 +8,7 @@ on:
 jobs:
   update-manifest:
     runs-on: ubuntu-latest
-    steps:
+    steps: 
       - uses: actions/checkout@v4
 
       - name: Run build-manifest
