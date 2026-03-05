@@ -2,22 +2,22 @@ name: Update Blog Manifest
 
 on:
   push:
-      paths:
-            - 'blog/posts/**'
+    paths:
+      - 'blog/posts/**'
 
-            jobs:
-              update-manifest:
-                  runs-on: ubuntu-latest
-                      steps:
-                            - uses: actions/checkout@v4
+jobs:
+  update-manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
-                                  - name: Run build-manifest
-                                          run: node build-manifest.js
+      - name: Run build-manifest
+        run: node build-manifest.js
 
-                                                - name: Commit updated manifest
-                                                        run: |
-                                                                  git config user.name "github-actions"
-                                                                            git config user.email "actions@github.com"
-                                                                                      git add blog/post-manifest.json
-                                                                                                git diff --staged --quiet || git commit -m "Auto-update post-manifest.json"
-                                                                                                          git push
+      - name: Commit updated manifest
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add blog/post-manifest.json
+          git diff --staged --quiet || git commit -m "Auto-update post-manifest.json"
+          git push
