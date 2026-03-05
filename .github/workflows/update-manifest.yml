@@ -3,12 +3,15 @@ name: Update Blog Manifest
 on:
   push:
     paths:
-      - 'blog/_posts/**'
+      - 'blog/_posts/**'   # ← matches where CMS actually writes
+
+permissions:
+  contents: write           # ← allows git push
 
 jobs:
   update-manifest:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - uses: actions/checkout@v4
 
       - name: Run build-manifest
