@@ -81,7 +81,7 @@
   </div>
   <footer>
     <div class="footer-centered">
-      <a href="/index.html"><img src="images/logo-seal-white.png" alt="Kim Reidy with Pointe3 Real Estate" class="footer-seal" /></a>
+      <a href="/index.html"><img src="/images/logo-seal-white.png" alt="Kim Reidy with Pointe3 Real Estate" class="footer-seal" /></a>
       <div class="footer-contact-row">
         <a href="tel:2065792667"><i class="fas fa-phone"></i> (206)-579-2667</a>
         <a href="mailto:kim@pointe3.com"><i class="fas fa-envelope"></i> kim@pointe3.com</a>
@@ -92,7 +92,7 @@
         <a href="https://www.linkedin.com/in/kimberlyreidy/" target="_blank"><i class="fab fa-linkedin"></i></a>
         <a href="https://www.youtube.com/channel/UCD4ZMtJ7MYgBphoonXE6eCw" target="_blank"><i class="fab fa-youtube"></i></a>
       </div>
-      <a href="https://www.pointe3.com" target="_blank"><img src="images/pointe3-logo.png" alt="Pointe3 Real Estate" class="footer-pointe3" /></a>
+      <a href="https://www.pointe3.com" target="_blank"><img src="/images/pointe3-logo.png" alt="Pointe3 Real Estate" class="footer-pointe3" /></a>
       <p class="footer-addr">3509 Fremont Ave N Suite 300, Seattle, WA 98103</p>
       <nav class="footer-nav-row">
         <a href="/index.html">Home</a>
