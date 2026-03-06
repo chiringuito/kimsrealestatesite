@@ -9,8 +9,8 @@
       </div>
       <div class="topbar-social">
         <a href="https://www.facebook.com/kimberly.reidy/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/kimreidy_realestate/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/kimberlyreidy/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/kim_reidy/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/kimberly-reidy/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
         <a href="https://www.youtube.com/channel/UCD4ZMtJ7MYgBphoonXE6eCw" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         <a href="https://www.tiktok.com/@seattlekim" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
       </div>
@@ -118,8 +118,8 @@
         </div>
         <div class="footer-social-row">
           <a href="https://www.facebook.com/kimberly.reidy/" target="_blank"><i class="fab fa-facebook"></i></a>
-          <a href="https://www.instagram.com/kimreidy_realestate/" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.linkedin.com/in/kimberlyreidy/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.instagram.com/kim_reidy/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/kimberly-reidy/" target="_blank"><i class="fab fa-linkedin"></i></a>
           <a href="https://www.youtube.com/channel/UCD4ZMtJ7MYgBphoonXE6eCw" target="_blank"><i class="fab fa-youtube"></i></a>
           <a href="https://www.tiktok.com/@seattlekim" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
         </div>
