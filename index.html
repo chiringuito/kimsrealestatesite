@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home – Kim Reidy Real Estate Agent</title>
   <meta name="description" content="Kim Reidy, Director of Relocation & Senior Broker at Pointe3 Real Estate, Seattle WA. Search homes, connect with an expert." />
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,139 +12,55 @@
   <link rel="stylesheet" href="/style.css" />
   <style>
     /* ── HERO VIDEO ── */
-    .hero {
-      position: relative;
-      min-height: 480px;
-      display: flex; align-items: center; justify-content: center;
-      text-align: center;
-      overflow: hidden;
-      background: #111;
-    }
-    .hero-video {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      opacity: .55;
-    }
+    .hero { position: relative; min-height: 480px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; background: #111; }
+    .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .55; }
     .hero-content { position: relative; z-index: 1; padding: 40px 20px; }
-    .hero-logo {
-      width: 200px; margin: 0 auto 30px;
-      animation: heroLogoZoom 2.5s ease forwards;
-      opacity: 0;
-    }
-    @keyframes heroLogoZoom {
-      from { opacity: 0; transform: scale(0.7); }
-      to   { opacity: 1; transform: scale(1); }
-    }
-    .hero-btn {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: var(--red); color: var(--white);
-      font-weight: 700; font-size: 18px; letter-spacing: 1px; text-transform: uppercase;
-      padding: 14px 32px; border-radius: 50px; transition: background .3s;
-      animation: heroLogoZoom 2s ease 0.3s forwards;
-      opacity: 0;
-    }
+    .hero-logo { width: 200px; margin: 0 auto 30px; animation: heroLogoZoom 2.5s ease forwards; opacity: 0; }
+    @keyframes heroLogoZoom { from { opacity: 0; transform: scale(0.7); } to { opacity: 1; transform: scale(1); } }
+    .hero-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--red); color: var(--white); font-weight: 700; font-size: 18px; letter-spacing: 1px; text-transform: uppercase; padding: 14px 32px; border-radius: 50px; transition: background .3s; animation: heroLogoZoom 2s ease 0.3s forwards; opacity: 0; }
     .hero-btn:hover { background: #000; }
     .hero-btn i { font-size: 20px; }
-
     /* ── SEARCH ── */
     .search-section { background: var(--gray-bg); }
-    .search-box {
-      background: var(--white); border-radius: 6px;
-      padding: 28px; max-width: 640px; margin: 0 auto;
-      box-shadow: 0 4px 16px rgba(0,0,0,.07);
-    }
-    .search-box input {
-      width: 100%; padding: 11px 14px;
-      border: 1px solid var(--gray-mid); border-radius: 4px;
-      font-size: 14px; font-family: inherit; margin-bottom: 12px;
-      outline: none; transition: border-color .2s;
-    }
+    .search-box { background: var(--white); border-radius: 6px; padding: 28px; max-width: 640px; margin: 0 auto; box-shadow: 0 4px 16px rgba(0,0,0,.07); }
+    .search-box input { width: 100%; padding: 11px 14px; border: 1px solid var(--gray-mid); border-radius: 4px; font-size: 14px; font-family: inherit; margin-bottom: 12px; outline: none; transition: border-color .2s; }
     .search-box input:focus { border-color: var(--red); }
     .search-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
-    .search-btn {
-      width: 100%; background: var(--red); color: var(--white);
-      border: none; padding: 13px; font-size: 15px; font-weight: 700;
-      font-family: inherit; border-radius: 4px; cursor: pointer; transition: background .2s;
-    }
+    .search-btn { width: 100%; background: var(--red); color: var(--white); border: none; padding: 13px; font-size: 15px; font-weight: 700; font-family: inherit; border-radius: 4px; cursor: pointer; transition: background .2s; }
     .search-btn:hover { background: var(--red-dark); }
-
     /* ── BIO ── */
     .bio-section { background: var(--gray-bg); }
     .bio-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 56px; align-items: center; }
     .bio-img-wrap { position: relative; }
     .bio-img-wrap img.bio-photo { border-radius: 4px; }
-    .bio-badge {
-      position: absolute; bottom: -18px; right: -18px;
-      width: 92px; border-radius: 50%;
-      border: 4px solid var(--white); box-shadow: 0 2px 10px rgba(0,0,0,.15);
-    }
+    .bio-badge { position: absolute; bottom: -18px; right: -18px; width: 92px; border-radius: 50%; border: 4px solid var(--white); box-shadow: 0 2px 10px rgba(0,0,0,.15); }
     .bio-name { font-family: var(--font-serif); font-size: 32px; margin-bottom: 4px; }
     .bio-title { color: var(--red); font-weight: 700; font-size: 15px; margin-bottom: 20px; }
     .bio-text { color: var(--gray-text); line-height: 1.8; font-size: 14.5px; margin-bottom: 14px; }
     .bio-btns { display: flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
-
-    /* ── PRICE CARDS (.box from Additional CSS — exact match) ── */
+    /* ── PRICE CARDS ── */
     .price-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
     .price-item { display: flex; flex-direction: column; }
-    .price-card {
-      overflow: hidden; position: relative; z-index: 1;
-      transition: all .5s; background: var(--white);
-      padding: 5px;
-      box-shadow: 0px 10px 51px 3px rgb(0 0 0 / 15%);
-      border-radius: 10px; display: block; text-decoration: none !important;
-    }
+    .price-card { overflow: hidden; position: relative; z-index: 1; transition: all .5s; background: var(--white); padding: 5px; box-shadow: 0px 10px 51px 3px rgb(0 0 0 / 15%); border-radius: 10px; display: block; text-decoration: none !important; }
     .price-card:hover { box-shadow: 3px 3px 5px #999; }
-    .price-card::before, .price-card::after {
-      content: "";
-      background: radial-gradient(circle at 23% 70%, rgba(255,255,255,0.8), #fff 30%);
-      width: 150%; height: 150%; opacity: 0; transform: rotate(45deg);
-      position: absolute; top: -10.5%; right: -150%; z-index: 1; transition: all 0.35s ease;
-    }
-    .price-card::after {
-      background: rgba(255,255,255,0.5); width: 65%; height: 65%;
-      right: auto; left: -20%; top: -65%;
-    }
+    .price-card::before, .price-card::after { content: ""; background: radial-gradient(circle at 23% 70%, rgba(255,255,255,0.8), #fff 30%); width: 150%; height: 150%; opacity: 0; transform: rotate(45deg); position: absolute; top: -10.5%; right: -150%; z-index: 1; transition: all 0.35s ease; }
+    .price-card::after { background: rgba(255,255,255,0.5); width: 65%; height: 65%; right: auto; left: -20%; top: -65%; }
     .price-card:hover::before { opacity: 1; right: -85%; }
-    .price-card:hover::after  { opacity: 1; top: -42%; }
+    .price-card:hover::after { opacity: 1; top: -42%; }
     .price-card img { width: 100%; height: auto; transition: all 0.5s ease; border-radius: 10px; display: block; }
     .price-card:hover img { transform: scale(1.2); }
-    /* .nstep-name — price label below the box card (from Additional CSS exactly) */
-    .nstep-name {
-      text-align: center; line-height: 30px; margin-top: 0;
-    }
-    .nstep-name::before {
-      content: ''; display: block; width: 2px; height: 50px;
-      background: #4a4242; margin: -15px auto 10px;
-      z-index: 1; position: relative;
-    }
-    .nstep-name small {
-      font-size: 18px; font-weight: 500; letter-spacing: 4px;
-      color: #000; text-transform: uppercase; display: block;
-    }
-    .nstep-name a {
-      font-size: 30px; color: #000; text-decoration: none !important;
-      font-weight: 700; display: block;
-    }
+    .nstep-name { text-align: center; line-height: 30px; margin-top: 0; }
+    .nstep-name::before { content: ''; display: block; width: 2px; height: 50px; background: #4a4242; margin: -15px auto 10px; z-index: 1; position: relative; }
+    .nstep-name small { font-size: 18px; font-weight: 500; letter-spacing: 4px; color: #000; text-transform: uppercase; display: block; }
+    .nstep-name a { font-size: 30px; color: #000; text-decoration: none !important; font-weight: 700; display: block; }
     .nstep-name a:hover { color: #E22626; }
-
-    /* ── RESOURCES ── */
-    /* ── SCROLL ANIMATIONS (matches Beaver Builder fl-zoom-in) ── */
-    .fl-zoom-in {
-      opacity: 0;
-      transform: scale(0.85);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .fl-zoom-in.fl-animated {
-      opacity: 1;
-      transform: scale(1);
-    }
-    /* Stagger delays for price tiles */
+    /* ── SCROLL ANIMATIONS ── */
+    .fl-zoom-in { opacity: 0; transform: scale(0.85); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fl-zoom-in.fl-animated { opacity: 1; transform: scale(1); }
     .price-item:nth-child(1) .price-card { transition-delay: 0s; }
     .price-item:nth-child(2) .price-card { transition-delay: 0.1s; }
     .price-item:nth-child(3) .price-card { transition-delay: 0.2s; }
     .price-item:nth-child(4) .price-card { transition-delay: 0.3s; }
-
     /* ── RESOURCES ── */
     .resources-section { background: var(--gray-bg); }
     .resources-row { display: grid; }
@@ -154,80 +69,38 @@
     .resources-photo-wrap { background: var(--gray-bg); padding: 24px; display: flex; align-items: flex-start; }
     .resources-photo-wrap img { width: 100%; height: auto; max-height: 520px; object-fit: cover; border-radius: 16px; display: block; box-shadow: 0 4px 24px rgba(0,0,0,.12); }
     .resources-cards { display: flex; flex-direction: column; gap: 16px; padding: 24px; background: var(--gray-bg); justify-content: flex-start; }
-    .resource-card {
-      display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 28px 28px 24px;
-      border-radius: 16px; text-decoration: none; color: var(--white);
-      background: #1a1a1a;
-    }
+    .resource-card { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 28px 28px 24px; border-radius: 16px; text-decoration: none; color: var(--white); background: #1a1a1a; }
     .resource-card.red { background: var(--red); }
     .resource-card { transition: opacity .2s linear, transform .2s linear, box-shadow .2s linear; }
     .resource-card:hover { opacity: .88; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.25); }
     .resource-card .rc-icon { font-size: 42px; color: var(--white); line-height: 1; margin-bottom: 4px; }
     .resource-card h3 { font-size: 20px; font-weight: 700; margin: 0 0 8px; color: var(--white); }
     .resource-card p { font-size: 14px; line-height: 1.6; margin: 0; color: rgba(255,255,255,.85); }
-    @media(max-width:768px) {
-      .resources-row.buyer-row, .resources-row.seller-row { grid-template-columns: 1fr; }
-      .resources-photo-wrap img { max-height: 280px; }
-    }
-    @media(max-width:900px) {
-      .resources-panel, .resources-panel.reverse { grid-template-columns: 1fr; }
-      .resources-photo { min-height: 220px; }
-      .resources-panel.reverse .resources-photo { order: -1; }
-    }
-
+    @media(max-width:768px) { .resources-row.buyer-row, .resources-row.seller-row { grid-template-columns: 1fr; } .resources-photo-wrap img { max-height: 280px; } }
     /* ── TESTIMONIALS ── */
     .testimonials-section { background: var(--gray-bg); padding: 60px 0; }
     .t-slider { position: relative; overflow: hidden; max-width: 900px; margin: 0 auto; }
     .t-track { display: flex; transition: transform .3s ease; }
-    .t-slide { min-width: 100%; }
-    .t-slide { flex: 0 0 100%; padding: 0 10px; }
-    .t-inner {
-      background: var(--white); border-radius: 16px;
-      box-shadow: 0 4px 24px rgba(0,0,0,.08);
-      display: grid; grid-template-columns: 280px 1fr;
-      overflow: hidden; min-height: 300px;
-    }
+    .t-slide { min-width: 100%; flex: 0 0 100%; padding: 0 10px; }
+    .t-inner { background: var(--white); border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,.08); display: grid; grid-template-columns: 280px 1fr; overflow: hidden; min-height: 300px; }
     .t-img-wrap { position: relative; overflow: hidden; }
     .t-img-wrap img.t-photo { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 300px; }
-    .t-img-wrap img.t-circle { display: none; }
     .t-content { padding: 36px 32px; display: flex; flex-direction: column; justify-content: center; position: relative; }
     .t-badge { width: 70px; height: 70px; margin-bottom: 16px; }
     .t-content h3 { font-size: 18px; font-weight: 700; margin-bottom: 12px; color: var(--black); }
     .t-content p { font-size: 14px; line-height: 1.7; color: #444; }
     .t-author { font-weight: 700; font-size: 14px; margin-top: 10px !important; color: #333; }
-    .t-arrow {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      background: none; border: none; font-size: 22px; color: #aaa;
-      cursor: pointer; z-index: 2; padding: 10px; transition: color .2s;
-    }
+    .t-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; font-size: 22px; color: #aaa; cursor: pointer; z-index: 2; padding: 10px; transition: color .2s; }
     .t-arrow:hover { color: var(--red); }
     .t-prev { left: -40px; }
     .t-next { right: -40px; }
-    /* Text-only slide (no client photo — CMS-driven) */
     .t-text-only { grid-template-columns: 1fr; }
-    @media(max-width:768px) {
-      .t-inner { grid-template-columns: 1fr; }
-      .t-img-wrap img.t-photo { min-height: 220px; max-height: 260px; }
-      .t-prev { left: 0; } .t-next { right: 0; }
-    }
-        .t-controls { text-align: center; margin-top: 28px; display: flex; justify-content: center; gap: 8px; }
+    @media(max-width:768px) { .t-inner { grid-template-columns: 1fr; } .t-img-wrap img.t-photo { min-height: 220px; max-height: 260px; } .t-prev { left: 0; } .t-next { right: 0; } }
+    .t-controls { text-align: center; margin-top: 28px; display: flex; justify-content: center; gap: 8px; }
     .t-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--gray-mid); border: none; cursor: pointer; transition: background .2s; }
     .t-dot.active { background: var(--red); }
-
-    @media (max-width: 900px) {
-      .bio-grid { grid-template-columns: 1fr; }
-      .price-grid { grid-template-columns: 1fr 1fr; }
-      .resources-grid { grid-template-columns: 1fr 1fr; }
-      .t-inner { grid-template-columns: 1fr; }
-      .t-img-wrap { max-width: 240px; margin: 0 auto; }
-    }
-    @media (max-width: 540px) {
-      .price-grid { grid-template-columns: 1fr; }
-      .resources-grid { grid-template-columns: 1fr 1fr; }
-      .search-row { grid-template-columns: 1fr; }
-      .bio-btns { flex-direction: column; }
-      .bio-btns a { text-align: center; }
-    }
+    @media (max-width: 900px) { .bio-grid { grid-template-columns: 1fr; } .price-grid { grid-template-columns: 1fr 1fr; } .t-inner { grid-template-columns: 1fr; } .t-img-wrap { max-width: 240px; margin: 0 auto; } }
+    @media (max-width: 540px) { .price-grid { grid-template-columns: 1fr; } .search-row { grid-template-columns: 1fr; } .bio-btns { flex-direction: column; } .bio-btns a { text-align: center; } }
   </style>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
@@ -235,8 +108,7 @@
 
   <!-- HERO VIDEO -->
   <div class="hero" id="hero">
-    <video class="hero-video" autoplay muted loop playsinline
-           poster="images/seattle-banner.jpg">
+    <video class="hero-video" autoplay muted loop playsinline poster="images/seattle-banner.jpg">
       <source src="images/pointe_video.mp4" type="video/mp4">
     </video>
     <div class="hero-content">
@@ -292,47 +164,30 @@
       <h2 class="section-title">Search By Price</h2>
       <div class="section-divider"></div>
       <div class="price-grid">
-
         <div class="price-item">
           <a class="price-card fl-zoom-in" href="https://kimreidy.realscout.com/homesearch/map?pmax=500000&zoom=12&geo_type=city&geo_id=5363000" target="_blank">
             <img src="images/price-under-500k.jpg" alt="$0 to $500K" />
           </a>
-          <div class="nstep-name">
-            <small>SEARCH FROM</small><br>
-            <a href="https://kimreidy.realscout.com/homesearch/map?pmax=500000&zoom=12&geo_type=city&geo_id=5363000" target="_blank">$0 To $500K</a>
-          </div>
+          <div class="nstep-name"><small>SEARCH FROM</small><br><a href="https://kimreidy.realscout.com/homesearch/map?pmax=500000&zoom=12&geo_type=city&geo_id=5363000" target="_blank">$0 To $500K</a></div>
         </div>
-
         <div class="price-item">
           <a class="price-card fl-zoom-in" href="https://kimreidy.realscout.com/homesearch/map?pmin=500000&pmax=800000&zoom=12&geo_type=city&geo_id=5363000" target="_blank">
             <img src="images/price-500-800k.jpg" alt="$500K to $800K" />
           </a>
-          <div class="nstep-name">
-            <small>SEARCH FROM</small><br>
-            <a href="https://kimreidy.realscout.com/homesearch/map?pmin=500000&pmax=800000&zoom=12&geo_type=city&geo_id=5363000" target="_blank">$500K To $800K</a>
-          </div>
+          <div class="nstep-name"><small>SEARCH FROM</small><br><a href="https://kimreidy.realscout.com/homesearch/map?pmin=500000&pmax=800000&zoom=12&geo_type=city&geo_id=5363000" target="_blank">$500K To $800K</a></div>
         </div>
-
         <div class="price-item">
           <a class="price-card fl-zoom-in" href="https://kimreidy.realscout.com/homesearch/map?pmin=800000&pmax=1500000&zoom=12&geo_type=city&geo_id=5363000" target="_blank">
             <img src="images/price-800-1500k.jpg" alt="$800K to $1.5M" />
           </a>
-          <div class="nstep-name">
-            <small>SEARCH FROM</small><br>
-            <a href="https://kimreidy.realscout.com/homesearch/map?pmin=800000&pmax=1500000&zoom=12&geo_type=city&geo_id=5363000" target="_blank">$800K To $1.5M</a>
-          </div>
+          <div class="nstep-name"><small>SEARCH FROM</small><br><a href="https://kimreidy.realscout.com/homesearch/map?pmin=800000&pmax=1500000&zoom=12&geo_type=city&geo_id=5363000" target="_blank">$800K To $1.5M</a></div>
         </div>
-
         <div class="price-item">
           <a class="price-card fl-zoom-in" href="https://kimreidy.realscout.com/homesearch/map?pmin=1500000&zoom=12&geo_type=city&geo_id=5363000" target="_blank">
             <img src="images/price-above-1500k.jpg" alt="$1.5M+" />
           </a>
-          <div class="nstep-name">
-            <small>SEARCH FROM</small><br>
-            <a href="https://kimreidy.realscout.com/homesearch/map?pmin=1500000&zoom=12&geo_type=city&geo_id=5363000" target="_blank">Above $1.5M+</a>
-          </div>
+          <div class="nstep-name"><small>SEARCH FROM</small><br><a href="https://kimreidy.realscout.com/homesearch/map?pmin=1500000&zoom=12&geo_type=city&geo_id=5363000" target="_blank">Above $1.5M+</a></div>
         </div>
-
       </div>
     </div>
   </section>
@@ -383,7 +238,6 @@
       <div class="t-slider">
         <button class="t-arrow t-prev" onclick="goSlide(cur-1)" aria-label="Previous">&#10094;</button>
         <button class="t-arrow t-next" onclick="goSlide(cur+1)" aria-label="Next">&#10095;</button>
-        <!-- Slides injected dynamically from content/testimonials/*.md (featured:true) -->
         <div class="t-track" id="tTrack"></div>
       </div>
     </div>
@@ -397,14 +251,8 @@
       <p style="color:#555;margin-bottom:24px;font-size:16px;">Stay up to date on the Seattle real estate market.</p>
       <form name="newsletter" data-netlify="true" netlify-honeypot="bot-field" id="newsletterForm" onsubmit="handleNewsletterSubmit(event)" style="position:relative;">
         <input type="hidden" name="bot-field" />
-        <input type="email" name="email" placeholder="Enter your email address" required
-          style="width:100%;height:60px;border-radius:50px;padding:0 180px 0 20px;font-size:18px;color:#000;border:1px #d3cfcf solid;background:#ebebeb;font-family:inherit;box-sizing:border-box;" />
-        <button type="submit"
-          style="position:absolute;right:5px;top:5px;height:50px;padding:0 30px;background:#E22626;color:#fff;border:1px #E22626 solid;border-radius:50px;font-size:16px;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.3s,border 0.3s;"
-          onmouseover="this.style.background='#000';this.style.borderColor='#000';"
-          onmouseout="this.style.background='#E22626';this.style.borderColor='#E22626';">
-          Submit
-        </button>
+        <input type="email" name="email" placeholder="Enter your email address" required style="width:100%;height:60px;border-radius:50px;padding:0 180px 0 20px;font-size:18px;color:#000;border:1px #d3cfcf solid;background:#ebebeb;font-family:inherit;box-sizing:border-box;" />
+        <button type="submit" style="position:absolute;right:5px;top:5px;height:50px;padding:0 30px;background:#E22626;color:#fff;border:1px #E22626 solid;border-radius:50px;font-size:16px;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.3s,border 0.3s;" onmouseover="this.style.background='#000';this.style.borderColor='#000';" onmouseout="this.style.background='#E22626';this.style.borderColor='#E22626';">Submit</button>
       </form>
       <p id="nlSuccess" style="display:none;color:#E22626;font-weight:600;margin-top:16px;">Thanks! You're subscribed.</p>
     </div>
@@ -413,39 +261,34 @@
   <script>
     function handleNewsletterSubmit(e) {
       e.preventDefault();
-      const form = e.target;
-      fetch('/', { method: 'POST', headers: {'Content-Type':'application/x-www-form-urlencoded'},
-        body: new URLSearchParams(new FormData(form)).toString()
-      }).then(function() {
-        form.style.display = 'none';
-        document.getElementById('nlSuccess').style.display = 'block';
-      }).catch(function() {});
+      var form = e.target;
+      fetch('/', { method: 'POST', headers: {'Content-Type':'application/x-www-form-urlencoded'}, body: new URLSearchParams(new FormData(form)).toString() })
+        .then(function() { form.style.display = 'none'; document.getElementById('nlSuccess').style.display = 'block'; })
+        .catch(function() {});
     }
   </script>
 
   <script>
-    // Search → RealScout
+    // ── Search → RealScout ──────────────────────────────────────────────────
     function doSearch() {
-      const pmin = document.getElementById('s-min').value.replace(/\D/g,'');
-      const pmax = document.getElementById('s-max').value.replace(/\D/g,'');
-      const beds = document.getElementById('s-beds').value;
-      let url = 'https://kimreidy.realscout.com/homesearch/map?zoom=12&geo_type=city&geo_id=5363000';
+      var pmin = document.getElementById('s-min').value.replace(/\D/g,'');
+      var pmax = document.getElementById('s-max').value.replace(/\D/g,'');
+      var beds = document.getElementById('s-beds').value;
+      var url = 'https://kimreidy.realscout.com/homesearch/map?zoom=12&geo_type=city&geo_id=5363000';
       if (pmin) url += '&pmin=' + pmin;
       if (pmax) url += '&pmax=' + pmax;
       if (beds) url += '&beds=' + beds;
       window.open(url, '_blank');
     }
-    // Scroll-triggered zoom-in animation (matches BB fl-zoom-in)
+
+    // ── Scroll-triggered zoom-in animation ─────────────────────────────────
     (function() {
       var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           if (entry.isIntersecting) {
-            // Stagger children if parent is a grid
             var els = entry.target.querySelectorAll('.fl-zoom-in');
             if (els.length) {
-              els.forEach(function(el, i) {
-                setTimeout(function() { el.classList.add('fl-animated'); }, i * 120);
-              });
+              els.forEach(function(el, i) { setTimeout(function() { el.classList.add('fl-animated'); }, i * 120); });
             } else {
               entry.target.classList.add('fl-animated');
             }
@@ -453,27 +296,13 @@
           }
         });
       }, { threshold: 0.15 });
-
-      // Observe individual cards
-      document.querySelectorAll('.fl-zoom-in').forEach(function(el) {
-        observer.observe(el);
-      });
-      // Also observe price grid and resource rows for staggered children
-      document.querySelectorAll('.price-grid, .resources-cards').forEach(function(el) {
-        observer.observe(el);
-      });
+      document.querySelectorAll('.fl-zoom-in').forEach(function(el) { observer.observe(el); });
+      document.querySelectorAll('.price-grid, .resources-cards').forEach(function(el) { observer.observe(el); });
     })();
 
-    // ── Testimonial Slider — CMS-driven from content/testimonials/*.md ──
-    // Files list mirrors testimonials.html — add new slugs here after Kim creates them via CMS
-    var testimonialFiles = [
-      '2019-09-05-steve-lori',
-      '2015-05-14-leejeremy720',
-      '2015-05-14-christinet',
-      '2015-02-01-lifeoff-loyal-heights',
-      '2015-02-01-lifeoff-lake-hills'
-    ];
-
+    // ── Testimonial Slider — fully dynamic from manifest ───────────────────
+    // No hardcoded list. Reads content/testimonial-manifest.json (auto-generated
+    // at build time by build-manifest.js). Only slides with featured: true are shown.
     var cur = 0, slideCount = 0, autoTimer = null;
     var track = document.getElementById('tTrack');
 
@@ -482,14 +311,14 @@
       cur = ((n % slideCount) + slideCount) % slideCount;
       track.style.transform = 'translateX(-' + (cur * 100) + '%)';
     }
-    function startAuto() { autoTimer = setInterval(function () { goSlide(cur + 1); }, 5000); }
+    function startAuto() { autoTimer = setInterval(function() { goSlide(cur + 1); }, 5000); }
     function stopAuto()  { clearInterval(autoTimer); }
 
     function parseFM(text) {
       var m = text.match(/^---\n([\s\S]*?)\n---/);
       if (!m) return {};
       var d = {};
-      m[1].split('\n').forEach(function (line) {
+      m[1].split('\n').forEach(function(line) {
         var i = line.indexOf(':');
         if (i < 0) return;
         var k = line.slice(0, i).trim();
@@ -513,33 +342,10 @@
         '</div></div></div>';
     }
 
-    (function initSlider() {
-      var results = [];
-      var pending = testimonialFiles.length;
-      if (pending === 0) return;
-      testimonialFiles.forEach(function (file) {
-        fetch('/content/testimonials/' + file + '.md')
-          .then(function (r) { return r.ok ? r.text() : ''; })
-          .then(function (text) {
-            if (text) {
-              var d = parseFM(text);
-              if (d.featured === 'true') results.push(d);
-            }
-          })
-          .catch(function () {})
-          .finally(function () {
-            pending--;
-            if (pending === 0) renderSlider(results);
-          });
-      });
-    })();
-
     function renderSlider(results) {
-      // Sort newest first
-      results.sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
+      results.sort(function(a, b) { return new Date(b.date) - new Date(a.date); });
       slideCount = results.length;
       if (slideCount === 0) {
-        // No featured testimonials — hide the section gracefully
         var section = track.closest('.testimonials-section');
         if (section) section.style.display = 'none';
         return;
@@ -549,31 +355,61 @@
       track.parentElement.addEventListener('mouseenter', stopAuto);
       track.parentElement.addEventListener('mouseleave', startAuto);
     }
+
+    // Load manifest then fetch each testimonial
+    (function initSlider() {
+      fetch('/content/testimonial-manifest.json')
+        .then(function(r) { return r.ok ? r.json() : []; })
+        .then(function(slugs) {
+          if (!slugs.length) { renderSlider([]); return; }
+          var results = [];
+          var pending = slugs.length;
+          slugs.forEach(function(slug) {
+            fetch('/content/testimonials/' + slug + '.md')
+              .then(function(r) { return r.ok ? r.text() : ''; })
+              .then(function(text) {
+                if (text) {
+                  var d = parseFM(text);
+                  if (d.featured === 'true') results.push(d);
+                }
+              })
+              .catch(function() {})
+              .finally(function() {
+                pending--;
+                if (pending === 0) renderSlider(results);
+              });
+          });
+        })
+        .catch(function() { renderSlider([]); });
+    })();
   </script>
+
   <script>
-    // Load bio name/title/paragraphs from CMS-managed content/bio.json
-    (function () {
+    // ── Bio loader from content/bio.json ───────────────────────────────────
+    (function() {
       fetch('/content/bio.json')
-        .then(function (r) { return r.ok ? r.json() : null; })
-        .then(function (d) {
+        .then(function(r) { return r.ok ? r.json() : null; })
+        .then(function(d) {
           if (!d) return;
           var el;
           if (d.name)  { el = document.getElementById('bio-name-home');  if (el) el.textContent = d.name; }
           if (d.title) { el = document.getElementById('bio-title-home'); if (el) el.textContent = d.title; }
-          ['para1','para2'].forEach(function (key) {
+          ['para1','para2'].forEach(function(key) {
             if (!d[key]) return;
             el = document.querySelector('[data-bio-home="' + key + '"]');
             if (el) el.textContent = d[key];
           });
         })
-        .catch(function () { /* keep static fallback content */ });
+        .catch(function() {});
     })();
   </script>
+
   <script src="/kimreidy-shared.js"></script>
-  <!-- Hidden form for Netlify to detect newsletter submissions -->
+
   <form name="newsletter" data-netlify="true" netlify-honeypot="bot-field" hidden>
     <input type="email" name="email" />
     <input type="hidden" name="bot-field" />
   </form>
+
 </body>
 </html>
