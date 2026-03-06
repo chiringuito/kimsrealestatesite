@@ -1,6 +1,16 @@
 /* kimreidy-shared.js — injects nav, topbar, and footer into every page */
 (function() {
   const navHTML = `
+    <style>
+      .nav-no-link {
+        display: block;
+        padding: 9px 18px;
+        font-size: 14px;
+        color: #aaa;
+        cursor: default;
+        white-space: nowrap;
+      }
+    </style>
     <div class="topbar">
       <div class="topbar-contact">
         <a href="tel:2062376391"><i class="fas fa-phone"></i> (206) 237-6391</a>
@@ -52,32 +62,39 @@
           </li>
           <li><a href="/blog.html">Blog</a></li>
           <li>
-            <a href="/neighborhoods.html">Seattle's Neighborhoods ▾</a>
+            <a href="#" onclick="return false;">Find Your Neighborhood ▾</a>
             <ul class="dropdown">
-              <li><a href="/neighborhoods/ballard.html">Ballard</a></li>
-              <li><a href="/neighborhoods/beacon-hill.html">Beacon Hill</a></li>
-              <li><a href="/neighborhoods/bellevue.html">Bellevue</a></li>
-              <li><a href="/neighborhoods/belltown.html">Belltown</a></li>
-              <li><a href="/neighborhoods/capitol-hill.html">Capitol Hill</a></li>
-              <li><a href="/neighborhoods/denny-triangle.html">Denny Triangle</a></li>
-              <li><a href="/neighborhoods/downtown-seattle.html">Downtown Seattle</a></li>
-              <li><a href="/neighborhoods/first-hill.html">First Hill</a></li>
-              <li><a href="/neighborhoods/fremont.html">Fremont</a></li>
-              <li><a href="/neighborhoods/international-district.html">International District</a></li>
-              <li><a href="/neighborhoods/issaquah.html">Issaquah</a></li>
-              <li><a href="/neighborhoods/kirkland.html">Kirkland</a></li>
-              <li><a href="/neighborhoods/leschi.html">Leschi</a></li>
-              <li><a href="/neighborhoods/lower-queen-anne.html">Lower Queen Anne</a></li>
-              <li><a href="/neighborhoods/madison-park.html">Madison Park</a></li>
-              <li><a href="/neighborhoods/madison-valley.html">Madison Valley</a></li>
-              <li><a href="/neighborhoods/madrona.html">Madrona</a></li>
-              <li><a href="/neighborhoods/magnolia.html">Magnolia</a></li>
-              <li><a href="/neighborhoods/pike-place-market.html">Pike Place / West Edge</a></li>
-              <li><a href="/neighborhoods/pioneer-square.html">Pioneer Square</a></li>
-              <li><a href="/neighborhoods/south-lake-union.html">South Lake Union</a></li>
-              <li><a href="/neighborhoods/upper-queen-anne.html">Upper Queen Anne</a></li>
-              <li><a href="/neighborhoods/wallingford.html">Wallingford</a></li>
-              <li><a href="/neighborhoods/west-seattle.html">West Seattle</a></li>
+              <li style="position:relative">
+                <a href="/neighborhoods.html">Seattle Neighborhoods ▾</a>
+                <ul class="sub-dropdown">
+                  <li><span class="nav-no-link">Ballard</span></li>
+                  <li><span class="nav-no-link">Beacon Hill</span></li>
+                  <li><span class="nav-no-link">Bellevue</span></li>
+                  <li><span class="nav-no-link">Belltown</span></li>
+                  <li><span class="nav-no-link">Capitol Hill</span></li>
+                  <li><span class="nav-no-link">Denny Triangle</span></li>
+                  <li><span class="nav-no-link">Downtown Seattle</span></li>
+                  <li><span class="nav-no-link">First Hill</span></li>
+                  <li><span class="nav-no-link">Fremont</span></li>
+                  <li><span class="nav-no-link">International District</span></li>
+                  <li><span class="nav-no-link">Issaquah</span></li>
+                  <li><span class="nav-no-link">Kirkland</span></li>
+                  <li><span class="nav-no-link">Leschi</span></li>
+                  <li><span class="nav-no-link">Lower Queen Anne</span></li>
+                  <li><span class="nav-no-link">Madison Park</span></li>
+                  <li><span class="nav-no-link">Madison Valley</span></li>
+                  <li><span class="nav-no-link">Madrona</span></li>
+                  <li><span class="nav-no-link">Magnolia</span></li>
+                  <li><span class="nav-no-link">Pike Place / West Edge</span></li>
+                  <li><span class="nav-no-link">Pioneer Square</span></li>
+                  <li><span class="nav-no-link">South Lake Union</span></li>
+                  <li><span class="nav-no-link">Upper Queen Anne</span></li>
+                  <li><span class="nav-no-link">Wallingford</span></li>
+                  <li><span class="nav-no-link">West Seattle</span></li>
+                </ul>
+              </li>
+              <li><a href="#" onclick="return false;">Seattle Rentals</a></li>
+              <li><a href="#" onclick="return false;">Seattle Relocations</a></li>
             </ul>
           </li>
           <li>
