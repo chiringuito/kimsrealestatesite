@@ -33,14 +33,6 @@
         <ul class="nav-menu" id="navMenu">
           <li><a href="/index.html">Home</a></li>
           <li>
-            <a href="/about.html">About ▾</a>
-            <ul class="dropdown">
-              <li><a href="/about.html#about-kim">About Kim</a></li>
-              <li><a href="https://www.youtube.com/channel/UCD4ZMtJ7MYgBphoonXE6eCw" target="_blank">Youtube</a></li>
-              <li><a href="/testimonials.html">Testimonials</a></li>
-            </ul>
-          </li>
-          <li>
             <a href="#" onclick="return false;">Find Your Neighborhood ▾</a>
             <ul class="dropdown">
               <li style="position:relative">
@@ -106,6 +98,14 @@
             </ul>
           </li>
           <li><a href="/blog.html">Kim's Blog</a></li>
+          <li>
+            <a href="/about.html">About ▾</a>
+            <ul class="dropdown">
+              <li><a href="/about.html#about-kim">About Kim</a></li>
+              <li><a href="https://www.youtube.com/channel/UCD4ZMtJ7MYgBphoonXE6eCw" target="_blank">Youtube</a></li>
+              <li><a href="/testimonials.html">Testimonials</a></li>
+            </ul>
+          </li>
           <li><a href="/contact.html">Contact</a></li>
         </ul>
       </div>
