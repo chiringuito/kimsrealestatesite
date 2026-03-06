@@ -1,15 +1,16 @@
-name: Update Blog Manifest
+name: Update Manifests
 
 on:
   push:
     paths:
-      - 'blog/_posts/**'   # ← matches where CMS actually writes
+      - 'blog/_posts/**'          # blog post added/edited/deleted via CMS
+      - 'content/testimonials/**' # testimonial added/edited/deleted via CMS
 
 permissions:
-  contents: write           # ← allows git push
+  contents: write
 
 jobs:
-  update-manifest:
+  update-manifests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,10 +18,10 @@ jobs:
       - name: Run build-manifest
         run: node build-manifest.js
 
-      - name: Commit updated manifest
+      - name: Commit updated manifests
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add blog/post-manifest.json
-          git diff --staged --quiet || git commit -m "Auto-update post-manifest.json"
+          git add blog/post-manifest.json content/testimonial-manifest.json
+          git diff --staged --quiet || git commit -m "Auto-update manifests [skip netlify]"
           git push
