@@ -52,6 +52,35 @@
           </li>
           <li><a href="/blog.html">Blog</a></li>
           <li>
+            <a href="/neighborhoods.html">Seattle's Neighborhoods ▾</a>
+            <ul class="dropdown">
+              <li><a href="/neighborhoods/ballard.html">Ballard</a></li>
+              <li><a href="/neighborhoods/beacon-hill.html">Beacon Hill</a></li>
+              <li><a href="/neighborhoods/bellevue.html">Bellevue</a></li>
+              <li><a href="/neighborhoods/belltown.html">Belltown</a></li>
+              <li><a href="/neighborhoods/capitol-hill.html">Capitol Hill</a></li>
+              <li><a href="/neighborhoods/denny-triangle.html">Denny Triangle</a></li>
+              <li><a href="/neighborhoods/downtown-seattle.html">Downtown Seattle</a></li>
+              <li><a href="/neighborhoods/first-hill.html">First Hill</a></li>
+              <li><a href="/neighborhoods/fremont.html">Fremont</a></li>
+              <li><a href="/neighborhoods/international-district.html">International District</a></li>
+              <li><a href="/neighborhoods/issaquah.html">Issaquah</a></li>
+              <li><a href="/neighborhoods/kirkland.html">Kirkland</a></li>
+              <li><a href="/neighborhoods/leschi.html">Leschi</a></li>
+              <li><a href="/neighborhoods/lower-queen-anne.html">Lower Queen Anne</a></li>
+              <li><a href="/neighborhoods/madison-park.html">Madison Park</a></li>
+              <li><a href="/neighborhoods/madison-valley.html">Madison Valley</a></li>
+              <li><a href="/neighborhoods/madrona.html">Madrona</a></li>
+              <li><a href="/neighborhoods/magnolia.html">Magnolia</a></li>
+              <li><a href="/neighborhoods/pike-place-market.html">Pike Place / West Edge</a></li>
+              <li><a href="/neighborhoods/pioneer-square.html">Pioneer Square</a></li>
+              <li><a href="/neighborhoods/south-lake-union.html">South Lake Union</a></li>
+              <li><a href="/neighborhoods/upper-queen-anne.html">Upper Queen Anne</a></li>
+              <li><a href="/neighborhoods/wallingford.html">Wallingford</a></li>
+              <li><a href="/neighborhoods/west-seattle.html">West Seattle</a></li>
+            </ul>
+          </li>
+          <li>
             <a href="/listings.html">Property Search ▾</a>
             <ul class="dropdown">
               <li><a href="https://kimreidy.realscout.com/homesearch/map?pmax=500000&zoom=12&geo_type=city&geo_id=5363000" target="_blank">$0–$500K</a></li>
@@ -99,6 +128,7 @@
         <nav class="footer-nav-row">
           <a href="/index.html">Home</a>
           <a href="/about.html">About</a>
+          <a href="/neighborhoods.html">Neighborhoods</a>
           <a href="/listings.html">Property Search</a>
           <a href="/buyers-guide.html">Buyer's Guide</a>
           <a href="/sellers-guide.html">Seller's Guide</a>
