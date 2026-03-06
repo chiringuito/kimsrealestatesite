@@ -11,7 +11,7 @@
   <style>
     .finder-page-wrap { display:grid; grid-template-columns:1fr 340px; gap:40px; align-items:start; max-width:1100px; margin:0 auto; padding:48px 24px; }
     .finder-intro h2 { font-size:28px; font-weight:700; margin-bottom:8px; color:var(--black); }
-    .finder-intro p  { color:var(--gray-text); font-size:15px; margin-bottom:28px; }
+    .finder-intro p { color:var(--gray-text); font-size:15px; margin-bottom:28px; }
     .form-group { margin-bottom:16px; }
     .form-group label { display:block; font-size:14px; font-weight:600; margin-bottom:5px; color:var(--black); }
     .form-group input, .form-group textarea, .form-group select { width:100%; height:50px; padding:0 14px; background:#f2f2f2; border:1px solid #ccc; border-radius:6px; color:#5a5a5a; font-size:16px; font-family:inherit; box-sizing:border-box; }
@@ -29,7 +29,7 @@
     .kim-sidebar-card .kim-photo { width:100%; display:block; aspect-ratio:1/1; object-fit:cover; object-position:top; }
     .kim-sidebar-info { padding:20px; text-align:center; border-bottom:1px solid #e8e8e8; }
     .kim-sidebar-info h3 { font-size:22px; font-weight:700; margin-bottom:4px; }
-    .kim-sidebar-info p  { font-size:14px; color:var(--gray-text); margin-bottom:12px; }
+    .kim-sidebar-info p { font-size:14px; color:var(--gray-text); margin-bottom:12px; }
     .kim-sidebar-info .contact-line { font-size:15px; margin-bottom:4px; color:var(--black); }
     .kim-sidebar-info .contact-line a { color:var(--black); }
     .kim-sidebar-info .contact-line a:hover { color:var(--red); }
@@ -44,12 +44,9 @@
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
-
   <div class="page-hero"><h1>Home Finder</h1></div>
-
   <section style="background:var(--gray-bg);">
     <div class="finder-page-wrap">
-
       <!-- FORM -->
       <div>
         <div class="finder-intro">
@@ -98,38 +95,35 @@
           <div class="form-success" id="finderForm-success">Thanks! Kim will set up your custom search and be in touch soon.</div>
         </form>
       </div>
-
       <!-- KIM SIDEBAR -->
       <div class="kim-sidebar-card">
         <img src="images/kimreidy.jpg" alt="Kim Reidy" class="kim-photo" />
         <div class="kim-sidebar-info">
           <h3>Kim Reidy</h3>
           <p>Director Of Relocation / Senior Broker</p>
-          <div class="contact-line"><i class="fas fa-phone"></i><a href="tel:2065792667">(206)-579-2667</a></div>
+          <div class="contact-line"><i class="fas fa-phone"></i><a href="tel:2062376391">(206) 237-6391</a></div>
           <div class="contact-line"><i class="fas fa-envelope"></i><a href="mailto:kim@pointe3.com">kim@pointe3.com</a></div>
         </div>
         <div class="kim-sidebar-follow">
           <h4>Follow Us</h4>
           <div class="social-icons">
-            <a href="https://www.facebook.com/KimReidyPointe3/" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.facebook.com/kimberly.reidy/" target="_blank"><i class="fab fa-facebook"></i></a>
             <a href="https://www.instagram.com/kimreidy_realestate/" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://www.linkedin.com/in/kimberlyreidy/" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="https://www.youtube.com/channel/UCD4ZMtJ7MYgBphoonXE6eCw" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/@seattlekim" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
           </div>
         </div>
       </div>
-
     </div>
   </section>
-
   <script>
     function handleSubmit(e, formId) {
       e.preventDefault();
       const form = document.getElementById(formId);
-      fetch('/', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'},
-        body: new URLSearchParams(new FormData(form)).toString()
-      }).then(function(){ form.style.display='none'; document.getElementById(formId+'-success').style.display='block'; })
-       .catch(function(){ document.getElementById(formId+'-success').style.display='block'; });
+      fetch('/', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: new URLSearchParams(new FormData(form)).toString() })
+        .then(function(){ form.style.display='none'; document.getElementById(formId+'-success').style.display='block'; })
+        .catch(function(){ document.getElementById(formId+'-success').style.display='block'; });
     }
   </script>
   <script src="/kimreidy-shared.js"></script>
