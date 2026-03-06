@@ -41,27 +41,6 @@
             </ul>
           </li>
           <li>
-            <a href="/buyers-guide.html">Resources ▾</a>
-            <ul class="dropdown">
-              <li style="position:relative">
-                <a href="#">Buy ▾</a>
-                <ul class="sub-dropdown">
-                  <li><a href="/buyers-guide.html">Buyer's Guide</a></li>
-                  <li><a href="/home-finder.html">Home Finder</a></li>
-                  <li><a href="/mortgage-calculator.html">Mortgage Calculator</a></li>
-                </ul>
-              </li>
-              <li style="position:relative">
-                <a href="#">Sell ▾</a>
-                <ul class="sub-dropdown">
-                  <li><a href="/sellers-guide.html">Seller's Guide</a></li>
-                  <li><a href="/home-evaluation.html">Home Evaluation</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li><a href="/blog.html">Blog</a></li>
-          <li>
             <a href="#" onclick="return false;">Find Your Neighborhood ▾</a>
             <ul class="dropdown">
               <li style="position:relative">
@@ -93,19 +72,40 @@
                   <li><span class="nav-no-link">West Seattle</span></li>
                 </ul>
               </li>
-              <li><a href="#" onclick="return false;">Seattle Rentals</a></li>
-              <li><a href="#" onclick="return false;">Seattle Relocations</a></li>
+              <li style="position:relative">
+                <a href="#" onclick="return false;">Seattle Property Search ▾</a>
+                <ul class="sub-dropdown">
+                  <li><a href="https://kimreidy.realscout.com/homesearch/map?pmax=500000&zoom=12&geo_type=city&geo_id=5363000" target="_blank">$0–$500K</a></li>
+                  <li><a href="https://kimreidy.realscout.com/homesearch/map?pmin=500000&pmax=800000&zoom=12&geo_type=city&geo_id=5363000" target="_blank">$500K–$800K</a></li>
+                  <li><a href="https://kimreidy.realscout.com/homesearch/map?pmin=800000&pmax=1500000&zoom=12&geo_type=city&geo_id=5363000" target="_blank">$800K–$1.5M</a></li>
+                  <li><a href="https://kimreidy.realscout.com/homesearch/map?pmin=1500000&zoom=12&geo_type=city&geo_id=5363000" target="_blank">$1.5M+</a></li>
+                </ul>
+              </li>
+              <li><span class="nav-no-link">Seattle Relocations</span></li>
+              <li><span class="nav-no-link">Seattle Rentals</span></li>
+              <li style="position:relative">
+                <a href="#" onclick="return false;">Seattle Resources ▾</a>
+                <ul class="sub-dropdown">
+                  <li style="position:relative">
+                    <a href="#" onclick="return false;">Buy ▾</a>
+                    <ul class="sub-dropdown">
+                      <li><a href="/buyers-guide.html">Buyer's Guide</a></li>
+                      <li><a href="/home-finder.html">Home Finder</a></li>
+                      <li><a href="/mortgage-calculator.html">Mortgage Calculator</a></li>
+                    </ul>
+                  </li>
+                  <li style="position:relative">
+                    <a href="#" onclick="return false;">Sell ▾</a>
+                    <ul class="sub-dropdown">
+                      <li><a href="/sellers-guide.html">Seller's Guide</a></li>
+                      <li><a href="/home-evaluation.html">Home Evaluation</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
             </ul>
           </li>
-          <li>
-            <a href="/listings.html">Property Search ▾</a>
-            <ul class="dropdown">
-              <li><a href="https://kimreidy.realscout.com/homesearch/map?pmax=500000&zoom=12&geo_type=city&geo_id=5363000" target="_blank">$0–$500K</a></li>
-              <li><a href="https://kimreidy.realscout.com/homesearch/map?pmin=500000&pmax=800000&zoom=12&geo_type=city&geo_id=5363000" target="_blank">$500K–$800K</a></li>
-              <li><a href="https://kimreidy.realscout.com/homesearch/map?pmin=800000&pmax=1500000&zoom=12&geo_type=city&geo_id=5363000" target="_blank">$800K–$1.5M</a></li>
-              <li><a href="https://kimreidy.realscout.com/homesearch/map?pmin=1500000&zoom=12&geo_type=city&geo_id=5363000" target="_blank">$1.5M+</a></li>
-            </ul>
-          </li>
+          <li><a href="/blog.html">Kim's Blog</a></li>
           <li><a href="/contact.html">Contact</a></li>
         </ul>
       </div>
